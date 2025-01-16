@@ -32909,26 +32909,6 @@
       "tipo": "usuario"
     },
     {
-      "id": "b951",
-      "dni": "Y9654813W",
-      "alta": "2024-11-01",
-      "apellidos": "Aponte Valencia",
-      "nombre": "Johan",
-      "direccion": "Travesia de vigo",
-      "email": "johan@gmail.com",
-      "provincia": {
-        "id": "01",
-        "nm": "Araba/Álava"
-      },
-      "municipio": {
-        "id": "01003",
-        "nm": "Aramaio"
-      },
-      "baja": "09/12/2024",
-      "telefono": "753268419",
-      "tipo": "usuario"
-    },
-    {
       "id": "774e",
       "dni": "53974821P",
       "alta": "2024-11-12",
@@ -32947,6 +32927,27 @@
       "baja": "",
       "telefono": "759864231",
       "tipo": "usuario"
+    },
+    {
+      "id": "b1c8",
+      "dni": "Y9654813W",
+      "alta": "15/01/2025",
+      "apellidos": "aponte",
+      "nombre": "johan",
+      "direccion": "wqw",
+      "email": "a@a.com",
+      "provincia": {
+        "id": "17",
+        "nm": "Girona"
+      },
+      "municipio": {
+        "id": "17019",
+        "nm": "Besalú"
+      },
+      "baja": "",
+      "telefono": "748569321",
+      "tipo": "usuario",
+      "lopd": true
     }
   ],
   "candidatos": [

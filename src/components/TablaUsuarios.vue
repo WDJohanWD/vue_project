@@ -30,7 +30,7 @@
           <span class="input-group-text custom-span me-2">Dirección: </span>
           <input type="text" class="form-control sm w-50" placeholder="Dirección" v-model="usuario.direccion">
           <span class="input-group-text custom-span ms-2 me-2">Email: </span>
-          <input type="email" class="form-control sm w-25" placeholder="Email" v-model="usuario.email">
+          <input type="email" class="form-control sm w-25" placeholder="Email" v-model="usuario.email" @blur="validarEmail">
 
           <span class="input-group-text custom-span me-2 ms-2">Teléfono:</span>
           <input class="form-control sm w-25" type="text" v-model="usuario.telefono"
@@ -481,6 +481,16 @@ export default {
         }
       }
     },
+    validarEmail(email) {
+      if (email == '') {
+        this.mostrarAlerta('Error', 'El email con formato no valido', 'error');
+      }
+      const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!regex.test(email)) {
+        this.mostrarAlerta('Error', 'El email con formato no valido', 'error')
+      }
+    },
+
 
     async eliminarUsuario() {
       try {
