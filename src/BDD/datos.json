@@ -32929,25 +32929,24 @@
       "tipo": "usuario"
     },
     {
-      "id": "b1c8",
+      "id": "ee2b",
       "dni": "Y9654813W",
-      "alta": "15/01/2025",
-      "apellidos": "aponte",
-      "nombre": "johan",
-      "direccion": "wqw",
-      "email": "a@a.com",
+      "alta": "2025-01-16",
+      "apellidos": "Aponte",
+      "nombre": "Johan",
+      "direccion": "ggg",
+      "email": "Johan@gmail.com",
       "provincia": {
-        "id": "17",
-        "nm": "Girona"
+        "id": "14",
+        "nm": "Córdoba"
       },
       "municipio": {
-        "id": "17019",
-        "nm": "Besalú"
+        "id": "14014",
+        "nm": "Cañete de las Torres"
       },
       "baja": "",
       "telefono": "748569321",
-      "tipo": "usuario",
-      "lopd": true
+      "tipo": "usuario"
     }
   ],
   "candidatos": [

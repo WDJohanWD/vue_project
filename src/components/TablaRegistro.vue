@@ -40,6 +40,19 @@
                 </div>
 
                 <div class="input-group-text mb-3">
+
+                    <span class="input-group-text custom-span  me-2">Contraseña: </span>
+                    <input type="password" :class="{'error-border' : passMissmatch}" class="form-control sm w-50" placeholder="Introduce la contraseña"
+                        v-model="usuario.pass1">
+
+                    <span class="input-group-text custom-span ms-2 me-2">Repetir contraseña: </span>
+                    <input type="password" :class="{'error-border' : passMissmatch}" class="form-control sm w-50" placeholder="Repite la contraseña"
+                        v-model="pass2">
+
+
+                </div>
+
+                <div class="input-group-text mb-3">
                     <span class="input-group-text custom-span me-2">Dirección: </span>
                     <input type="text" class="form-control sm w-100" placeholder="Dirección"
                         v-model="usuario.direccion">
@@ -67,7 +80,7 @@
 
 
                 </div>
-                <input type="checkbox" class="text-align-left" name="" id="" v-model="usuario.lopd" required> He
+                <input type="checkbox" class="text-align-left" name="" id="" v-model="this.lopd" required> He
                 leido y
                 acepto la <router-link to="/privacidad">Politica de privacidad</router-link> <br>
             </div>
@@ -103,8 +116,8 @@ export default {
                 baja: '',
                 telefono: '',
                 tipo: 'usuario',
-                lopd: false
             },
+            lopd: false,
             emailRepetido: '',
             provincias: [],
             municipios: [],
@@ -292,16 +305,16 @@ export default {
         },
         obtenerFechaHoy() {
             const fecha = new Date();
-            const opciones = { day: '2-digit', month: '2-digit', year: 'numeric' };
-            const fechaFormateada = new Intl.DateTimeFormat('es-ES', opciones).format(fecha);
-            //return fecha.toLocaleDateString('es-ES');  // Formato dd/mm/yyyy
-            return fechaFormateada;
+            const year = fecha.getFullYear();
+            const month = String(fecha.getMonth() + 1).padStart(2, '0');
+            const day = String(fecha.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
         },
 
-        comprobarEmail(email){
-            if(this.usuario.email === email){
+        comprobarEmail(email) {
+            if (this.usuario.email === email) {
                 return true
-            }else{
+            } else {
                 this.mostrarAlerta('Aviso', 'Email diferente al introducido', 'error');
                 return false
             }
@@ -321,45 +334,46 @@ export default {
 
             if (resultado.isConfirmed) {
                 // Verificar si los campos requeridos están llenos
-                if (this.usuario.dni && this.usuario.apellidos && this.usuario.telefono ) {
+                if (this.usuario.dni && this.usuario.apellidos && this.usuario.telefono && this.usuario.email && this.usuario.provincia && this.usuario.municipio && this.lopd) {
                     try {
 
-                        if(!this.comprobarEmail(this.emailRepetido)){
+                        if (!this.comprobarEmail(this.emailRepetido)) {
                             this.mostrarAlerta('Aviso', 'Email repetido incorrecto', 'error');
 
-                        }else{
-                        this.usuario.baja = '';
-                        // Obtener los usuarios existentes
-                        const response = await fetch('http://localhost:3000/usuarios');
-                        if (!response.ok) {
-                            throw new Error('Error al obtener los usuarios: ' + response.statusText);
-                        }
-
-                        const usuariosExistentes = await response.json();
-
-                        const usuarioExistente = usuariosExistentes.find(usuario => usuario.dni === this.usuario.dni);
-                        if (usuarioExistente && usuarioExistente.baja === '') {
-                            this.mostrarAlerta('Error', 'El usuario ya existe con este DNI', 'error');
-                        }
-                        else if (usuarioExistente && usuarioExistente.baja !== '') {
-
-                            this.mostrarAlerta('Aviso', 'Habla con el administrador', 'error');
                         } else {
-                            this.usuario.alta = this.obtenerFechaHoy()
-                            const crearResponse = await fetch('http://localhost:3000/usuarios', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                },
-                                body: JSON.stringify(this.usuario),
-                            });
-
-                            if (!crearResponse.ok) {
-                                throw new Error('Error al guardar el usuario: ' + crearResponse.statusText);
+                            this.usuario.baja = '';
+                            // Obtener los usuarios existentes
+                            const response = await fetch('http://localhost:3000/usuarios');
+                            if (!response.ok) {
+                                throw new Error('Error al obtener los usuarios: ' + response.statusText);
                             }
 
-                            this.mostrarAlerta('Aviso', 'usuario grabado correctamente', 'success');
-                        }}
+                            const usuariosExistentes = await response.json();
+
+                            const usuarioExistente = usuariosExistentes.find(usuario => usuario.dni === this.usuario.dni);
+                            if (usuarioExistente && usuarioExistente.baja === '') {
+                                this.mostrarAlerta('Error', 'El usuario ya existe con este DNI', 'error');
+                            }
+                            else if (usuarioExistente && usuarioExistente.baja !== '') {
+
+                                this.mostrarAlerta('Aviso', 'Habla con el administrador', 'error');
+                            } else {
+                                this.usuario.alta = this.obtenerFechaHoy()
+                                const crearResponse = await fetch('http://localhost:3000/usuarios', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify(this.usuario),
+                                });
+
+                                if (!crearResponse.ok) {
+                                    throw new Error('Error al guardar el usuario: ' + crearResponse.statusText);
+                                }
+
+                                this.mostrarAlerta('Aviso', 'usuario grabado correctamente', 'success');
+                            }
+                        }
                     } catch (error) {
                         console.error(error);
                         this.mostrarAlerta('Error', 'No se pudo grabar el usuario.', 'error');
