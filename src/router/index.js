@@ -9,6 +9,7 @@ import PoliticaPrivacidad from '@/components/PoliticaPrivacidad.vue'
 import TablaComentarios from '@/components/TablaComentarios.vue'
 import TablaArticulos from '@/components/TablaArticulos.vue'
 import TablaRegistro from '@/components/TablaRegistro.vue'
+import TablaLogin from '@/components/TablaLogin.vue'
 
 
 const routes = [
@@ -62,6 +63,11 @@ const routes = [
     path:'/registro',
     name:'registro',
     component: TablaRegistro
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: TablaLogin
   }
 ]
 

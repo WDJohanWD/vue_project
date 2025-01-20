@@ -41,8 +41,9 @@
                         <i class="bi bi-person-bounding-box fs-2"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end fs-5" aria-labelledby="dropdownMenuButton">
-                        <li><router-link class="nav-link text-primary text-end me-3"  to="" href="#">Acceder</router-link></li>
+                        <li><router-link class="nav-link text-primary text-end me-3"  to="/login" href="#">Acceder</router-link></li>
                         <li><router-link class="nav-link text-primary text-end me-3" to="/registro" href="#">Registro</router-link></li>
+                        <li><router-link class="nav-link text-primary text-end me-3" to="/" href="#">Terminar sesión</router-link></li>
                     </ul>
                 </div>
 
@@ -53,6 +54,7 @@
 </template>
 
 <script>
+
 export default {
     name: "NavBar"
 }

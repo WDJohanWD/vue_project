@@ -43,11 +43,11 @@
 
                     <span class="input-group-text custom-span  me-2">Contraseña: </span>
                     <input type="password" :class="{'error-border' : passMissmatch}" class="form-control sm w-50" placeholder="Introduce la contraseña"
-                        v-model="usuario.pass1">
+                        v-model="usuario.pass">
 
                     <span class="input-group-text custom-span ms-2 me-2">Repetir contraseña: </span>
                     <input type="password" :class="{'error-border' : passMissmatch}" class="form-control sm w-50" placeholder="Repite la contraseña"
-                        v-model="pass2">
+                        v-model="pass2" @blur="comprobarContraseña(this.pass2)">
 
 
                 </div>
@@ -95,6 +95,7 @@
 
 <script>
 import Swal from 'sweetalert2';
+import {encriptarContrasena} from '../config/passport.mjs';
 
 export default {
     name: "TablaUsuarios",
@@ -111,6 +112,7 @@ export default {
                 nombre: '',
                 direccion: '',
                 email: '',
+                pass: '',
                 provincia: '',
                 municipio: '',
                 baja: '',
@@ -123,7 +125,8 @@ export default {
             municipios: [],
             errores: [],
             isChecked: false,
-            editDni: false
+            editDni: false,
+            pass2: '',
         };
     },
 
@@ -142,6 +145,10 @@ export default {
                 municipio.id.startsWith(this.usuario.provincia.id)
             )
         },
+
+        passMissmatch() {
+            return this.usuario.pass !== this.pass2;
+        }
     },
 
     methods: {
@@ -207,10 +214,12 @@ export default {
                 email: '',
                 provincia: '',
                 municipio: '',
-                baja: ''
+                baja: '',
+                pass: ''
             }
             this.emailRepetido = '';
             this.editDni = false;
+            this.pass2 = '';
         },
 
         validarDNI(dni) {
@@ -319,6 +328,14 @@ export default {
                 return false
             }
         },
+        comprobarContraseña(pass){
+            if (this.usuario.pass === pass) {
+                return true
+            } else {
+                this.mostrarAlerta('Aviso', 'Contraseña diferente al introducido', 'error');
+                return false
+            }
+        },
 
         async grabarUsuario() {
             const resultado = await Swal.fire({
@@ -339,9 +356,13 @@ export default {
 
                         if (!this.comprobarEmail(this.emailRepetido)) {
                             this.mostrarAlerta('Aviso', 'Email repetido incorrecto', 'error');
-
+                        
+                        } else if (!this.comprobarContraseña(this.pass2)) {
+                            this.mostrarAlerta('Aviso', 'Contraseña repetida incorrecta', 'error');
                         } else {
                             this.usuario.baja = '';
+                            this.encriptarContrasenas(this.usuario.pass);
+
                             // Obtener los usuarios existentes
                             const response = await fetch('http://localhost:3000/usuarios');
                             if (!response.ok) {
@@ -366,7 +387,7 @@ export default {
                                     },
                                     body: JSON.stringify(this.usuario),
                                 });
-
+                                this.limpiarFormCli();
                                 if (!crearResponse.ok) {
                                     throw new Error('Error al guardar el usuario: ' + crearResponse.statusText);
                                 }
@@ -384,7 +405,11 @@ export default {
             }
         },
 
-
+        async encriptarContrasenas(pass){
+            const passEncriptada = await encriptarContrasena(pass);
+            console.log('Contraseña encriptada:', passEncriptada);
+            this.usuario.pass = passEncriptada;
+        }
 
 
     },
