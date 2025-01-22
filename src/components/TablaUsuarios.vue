@@ -76,7 +76,7 @@
   </div>
 
 
-  <div>
+  <div v-if="isAdmin">
     <div class="container my-5">
       <h4 class="mb-4"><i class="bi bi-card-list"></i> Lista de Datos</h4>
       <div class="container my-2">
@@ -164,6 +164,7 @@ export default {
         tipo: 'usuario'
       },
 
+      isAdmin: false,
       usuarios: [],
       provincias: [],
       municipios: [],
@@ -179,6 +180,8 @@ export default {
     this.getUsuarios();
     this.getProvincias();
     this.getMunicipios();
+    this.isAdmin = localStorage.getItem('isAdmin') === 'true';
+
   },
 
 

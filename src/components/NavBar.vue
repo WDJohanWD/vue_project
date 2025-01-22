@@ -7,14 +7,14 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
+                    <li v-if="isAdmin" class="nav-item">
                         <router-link to="/" class="nav-link text-white" exact-active-class="active">Inicio</router-link>
                     </li>
-                    <li class="nav-item">
+                    <li v-if="isAdmin" class="nav-item">
                         <router-link to="/usuarios" class="nav-link text-white"
                             exact-active-class="active">Usuarios</router-link>
                     </li>
-                    <li class="nav-item">
+                    <li  class="nav-item">
                         <router-link to="/empleo" class="nav-link text-white"
                             exact-active-class="active">Empleo</router-link>
                     </li>
@@ -36,14 +36,20 @@
                 <button class="btn btn-outline-success bg-light" type="submit"> <i class="bi bi-search"></i></button>
 
                 <div class="dropdown">
-                    <button class="dropdown-toggle  ms-4 me-2" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
-                        aria-expanded="false">
+                    <button class="dropdown-toggle  ms-4 me-2" type="button" id="dropdownMenuButton"
+                        data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-person-bounding-box fs-2"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end fs-5" aria-labelledby="dropdownMenuButton">
-                        <li><router-link class="nav-link text-primary text-end me-3"  to="/login" href="#">Acceder</router-link></li>
-                        <li><router-link class="nav-link text-primary text-end me-3" to="/registro" href="#">Registro</router-link></li>
-                        <li><router-link class="nav-link text-primary text-end me-3" to="/" href="#">Terminar sesión</router-link></li>
+                        <li v-if="!isLogged" ><router-link class="nav-link text-primary text-end me-3" to="/login"
+                                href="#">Acceder</router-link></li>
+                        <li><router-link class="nav-link text-primary text-end me-3" to="/registro"
+                                href="#">Registro</router-link></li>
+                        <li>
+                            <a class="nav-link text-primary text-end me-3" v-if="isLogged" @click.prevent="logout">Cerrar sesión</a>
+                        </li>
+
+
                     </ul>
                 </div>
 
@@ -54,11 +60,37 @@
 </template>
 
 <script>
-
 export default {
-    name: "NavBar"
-}
+    name: "NavBar",
+    data() {
+        return {
+            isDropdownVisible: false,
+            isAdmin: false,
+            isLogged: false,
+        };
+    },
+    mounted() {
+        // Comprobar si el usuario está logueado al montar el componente
+        this.isAdmin = localStorage.getItem('isAdmin') === 'true';
+        this.isLogged = localStorage.getItem('isLogueado') === 'true';
+    },
+    methods: {
+        toggleDropdown() {
+            console.log("botón pulsado");
+            this.isDropdownVisible = !this.isDropdownVisible;
+        },
+        logout() {
+            // Eliminar los datos de sesión del localStorage
+            localStorage.removeItem('isLogueado');
+            localStorage.removeItem('isAdmin');
+            this.$router.push({ name: 'login' }).catch(err => {
+                console.error(err); // Captura y logea errores para debugging
+            });
+        },
+    },
+};
 </script>
+
 <style scoped>
 /* Cambiar el color de la clase active */
 .nav-link.active {

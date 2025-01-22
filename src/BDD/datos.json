@@ -32909,26 +32909,6 @@
       "tipo": "usuario"
     },
     {
-      "id": "774e",
-      "dni": "53974821P",
-      "alta": "2024-11-12",
-      "apellidos": "Gonz",
-      "nombre": "Est",
-      "direccion": "Vigo",
-      "email": "izan@gmail.com",
-      "provincia": {
-        "id": "03",
-        "nm": "Alicante/Alacant"
-      },
-      "municipio": {
-        "id": "03003",
-        "nm": "Agres"
-      },
-      "baja": "",
-      "telefono": "759864231",
-      "tipo": "usuario"
-    },
-    {
       "id": "f513",
       "dni": "Y9654813W",
       "alta": "2025-01-20",
@@ -32948,6 +32928,27 @@
       "baja": "",
       "telefono": "786532416",
       "tipo": "usuario"
+    },
+    {
+      "id": "02e3",
+      "dni": "53974821P",
+      "alta": "2025-01-21",
+      "apellidos": "González Poyet",
+      "nombre": "Estebombita",
+      "direccion": "Lyon",
+      "email": "esteban@mail.com",
+      "pass": "$2a$10$2n69jy1VlNUbM41xg9t9zeVIOVUWgOMe5iX8goa9Gx71f.ZX5AWIK",
+      "provincia": {
+        "id": "08",
+        "nm": "Barcelona"
+      },
+      "municipio": {
+        "id": "08004",
+        "nm": "Alpens"
+      },
+      "baja": "",
+      "telefono": "789653241",
+      "tipo": "admin"
     }
   ],
   "candidatos": [

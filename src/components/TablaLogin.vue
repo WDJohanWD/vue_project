@@ -10,7 +10,7 @@
         </div>
 
         <div class="container-fluid border p-5">
-        <form @submit.prevent="iniciarSesion" class="p-4 border rounded shadow-sm bg-light w-50 mx-auto">
+            <form @submit.prevent="iniciarSesion" class="p-4 border rounded shadow-sm bg-light w-50 mx-auto">
                 <!-- Campo DNI -->
                 <div class="mb-3">
                     <label for="dni" class="form-label">DNI:</label>
@@ -38,8 +38,8 @@
 </template>
 
 <script>
-//import Swal from 'sweetalert2';
-import {verificarContrasena} from '../config/passport.mjs';
+import Swal from 'sweetalert2';
+import { verificarContrasena } from '../config/passport.mjs';
 
 export default {
     name: "TablaLogin",
@@ -78,7 +78,18 @@ export default {
                 console.error(error);
             }
         },
-
+        mostrarAlerta(titulo, mensaje, icono) {
+            Swal.fire({
+                title: titulo,
+                text: mensaje,
+                icon: icono,
+                customClass: {
+                    container: "custom-alert-container",
+                    popup: "custom-alert-popup",
+                    modal: "custom-alert-modal",
+                },
+            });
+        },
 
         async iniciarSesion() {
             // Buscar el usuario con el DNI proporcionado
@@ -93,12 +104,24 @@ export default {
                 );
 
                 if (contrasenaCorrecta) {
-                    this.errorMessage = ""; // Limpiar mensaje de error si las credenciales son correctas
-                    alert("Inicio de sesión exitoso");
-                    // Redirigir o hacer algo después del inicio de sesión
-                } else {
-                    this.errorMessage = "DNI o contraseña incorrectos. Inténtalo de nuevo.";
+                    if (usuario.tipo === "admin") {
+                        this.errorMessage = ""; // Limpiar mensaje de error
+                        this.mostrarAlerta("Bienvenido", "Sesión Iniciada", "success");
+                        localStorage.setItem('isLogueado', 'true');
+                        localStorage.setItem('isAdmin', 'true');
+                        this.$router.push({ name: 'inicio' }).then(() => {
+                            window.location.reload(); // Recargar la página
+                        });
+                    } else {
+                        this.errorMessage = ""; // Limpiar mensaje de error
+                        this.mostrarAlerta("Bienvenido", "Sesión Iniciada", "success");
+                        localStorage.setItem('isLogueado', 'true');
+                        localStorage.setItem('isAdmin', 'false');
+                        this.$router.push({ name: 'inicio' }); // Redirigir a una ruta para usuarios normales
+                    }
+
                 }
+
             } else {
                 this.errorMessage = "DNI o contraseña incorrectos. Inténtalo de nuevo.";
             }

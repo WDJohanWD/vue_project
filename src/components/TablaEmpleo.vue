@@ -73,7 +73,7 @@
   </div>
 
 
-  <div>
+  <div v-if="isAdmin">
     <div class="container my-5">
       <h4 class="mb-4"><i class="bi bi-pencil-square"></i> Gestionar candidatos</h4>
       <div class="container my-2">
@@ -151,6 +151,7 @@ export default {
         avisoLegal: '',
         comentario: ''
       },
+      isAdmin: false,
       candidatos: [],
       departamentos: [],
       editMovil: false,
@@ -162,6 +163,7 @@ export default {
   mounted() {
     this.getCandidatos();
     this.getDepartamentos();
+    this.isAdmin = localStorage.getItem('isAdmin') === 'true';
   },
   computed:{
     

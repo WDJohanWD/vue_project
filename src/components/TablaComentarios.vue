@@ -53,7 +53,7 @@
         </form>
 
         <!-- TABLA COMENTARIOS -->
-        <div class="container my-5">
+        <div v-if="isAdmin" class="container my-5">
             <h4 class="mb-4"><i class="bi bi-file-earmark-bar-graph"></i> TABLA DE COMENTARIOS</h4>
             <div class="container my-2">
                 <div class="table-responsive">
@@ -130,14 +130,18 @@ export default {
             comentarios: [],
             usuarios: [],
             currentPage: 1,
-            pageSize: 5
+            pageSize: 5,
+            isAdmin: false,
         };
+
     },
 
     mounted() {
         this.getComentarios();
         this.getUsuarios();
         this.valoresIniciales();
+        this.isAdmin = localStorage.getItem('isAdmin') === 'true';
+
     },
     computed: {
 
