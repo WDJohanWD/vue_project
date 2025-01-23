@@ -53,32 +53,32 @@
         </form>
 
         <!-- TABLA COMENTARIOS -->
-        <div v-if="isAdmin" class="container my-5">
+        <div class="container my-5">
             <h4 class="mb-4"><i class="bi bi-file-earmark-bar-graph"></i> TABLA DE COMENTARIOS</h4>
             <div class="container my-2">
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead class="table-info rounded-header">
                             <tr>
-                                <th scope="col" class="w-15 text-center">ID</th>
-                                <th scope="col" class="w-20">Fecha</th>
-                                <th scope="col" class="w-20">Email</th>
+                                <th v-if="isAdmin" scope="col" class="w-15 text-center">ID</th>
+                                <th scope="col" class="w-20 text-center">Fecha</th>
+                                <th scope="col" class="w-20 text-start">Email</th>
                                 <th scope="col" class="w-20 text-center">Mensaje</th>
-                                <th scope="col" class="w-10">Valoración</th>
-                                <th scope="col" class="pale-yellow table-warning">Acciones</th>
+                                <th scope="col" class="w-10 text-center">Valoración</th>
+                                <th scope="col" class="pale-yellow table-warning" v-if="isAdmin">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="comentario in comentariosPorPagina" :key="comentario.id">
-                                <td class="align-middle">{{ comentario.id }}</td>
-                                <td class="text-start align-middle">
+                                <td v-if="isAdmin" class="align-middle">{{ comentario.id }}</td>
+                                <td class=" align-middle">
                                     {{ comentario.fechaComentario }}
                                 </td>
                                 <td class="text-start align-middle">{{ comentario.clienteEmail }}</td>
                                 <td class="align-middle">{{ comentario.clienteMensaje }}</td>
                                 <td class="align-middle">{{ comentario.clienteValor }}</td>
-                                <td class="text-center align-middle pale-yellow table-warning">
-                                    <div>
+                                <td v-if="isAdmin" class="text-center align-middle pale-yellow table-warning">
+                                    <div >
                                         <button class="btn btn-warning m-2" @click="seleccionarComentario(comentario)">
                                             <i class="fas fa-pencil-alt"></i>
                                         </button>
@@ -132,6 +132,8 @@ export default {
             currentPage: 1,
             pageSize: 5,
             isAdmin: false,
+            isLogged: false,
+            dniUsuario: '',
         };
 
     },
@@ -141,6 +143,9 @@ export default {
         this.getUsuarios();
         this.valoresIniciales();
         this.isAdmin = localStorage.getItem('isAdmin') === 'true';
+        this.isLogged = localStorage.getItem('isLogueado') === 'true';
+        this.dniUsuario = localStorage.getItem('dni');
+
 
     },
     computed: {
@@ -321,7 +326,9 @@ export default {
                             this.mostrarAlerta("Error", "Tienes que aceptar las condiciones", "error")
 
                         } else {
-
+                            if (!this.isLogged){
+                                this.mostrarAlerta("Error", "Tienes que estar logueado", "error")
+                            }else{
                             const response = await fetch('http://localhost:3000/comentarios');
                             if (!response.ok) {
                                 throw new Error('Error al obtener los comentarios: ' + response.statusText);
@@ -345,7 +352,7 @@ export default {
                                 this.limpiarFormComentario();
                             }
                         }
-
+                        }
                     } catch (error) {
                         console.error(error);
                         this.mostrarAlerta('Error', 'No se pudo grabar el comentario.', 'error');

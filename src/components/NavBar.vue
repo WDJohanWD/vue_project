@@ -35,6 +35,7 @@
                 <input class="form-control w-25 ms-auto" type="search" placeholder="Buscar" aria-label="Search">
                 <button class="btn btn-outline-success bg-light" type="submit"> <i class="bi bi-search"></i></button>
 
+                <span v-if="isLogged" class="navbar-text text-white ms-3">{{ nombreUsuario }}</span>
                 <div class="dropdown">
                     <button class="dropdown-toggle  ms-4 me-2" type="button" id="dropdownMenuButton"
                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -67,16 +68,47 @@ export default {
             isDropdownVisible: false,
             isAdmin: false,
             isLogged: false,
+            dniUsuario: '',
+            nombreUsuario: '',
+            usuarios: []
         };
     },
-    mounted() {
+
+    mounted: async function() {
         // Comprobar si el usuario está logueado al montar el componente
+        await this.getUsuarios();
         this.isAdmin = localStorage.getItem('isAdmin') === 'true';
         this.isLogged = localStorage.getItem('isLogueado') === 'true';
+        this.dniUsuario = localStorage.getItem('dni');
+        this.obtenerNombre(this.dniUsuario);
     },
     methods: {
+        async getUsuarios() {
+            try {
+                const response = await fetch('http://localhost:3000/usuarios');
+                if (!response.ok) {
+                    throw new Error('Error en la solicitud: ' + response.statusText);
+                }
+
+                // Obtener y ordenar usuarios por apellidos y luego por nombre
+                this.usuarios = await response.json();
+
+            } catch (error) {
+                console.error(error);
+            }
+        },
+
+        async obtenerNombre(dni) {
+            const usuario = this.usuarios.find((user) => user.dni === dni);
+            if (usuario) {
+                this.nombreUsuario = usuario.nombre;
+            } else {
+                console.error('Usuario no encontrado');
+                this.nombreUsuario = '';
+            }
+        },
+
         toggleDropdown() {
-            console.log("botón pulsado");
             this.isDropdownVisible = !this.isDropdownVisible;
         },
         logout() {
@@ -84,9 +116,12 @@ export default {
             localStorage.removeItem('isLogueado');
             localStorage.removeItem('isAdmin');
             this.$router.push({ name: 'login' }).catch(err => {
+                window.location.reload();
                 console.error(err); // Captura y logea errores para debugging
             });
         },
+
+
     },
 };
 </script>

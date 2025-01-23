@@ -70,7 +70,7 @@
     </div>
 
 
-    <div>
+    <div v-if="isAdmin">
         <div class="container my-5">
             <h4 class="mb-4"><i class="bi bi-card-list"></i> Tabla de artículos</h4>
             <div class="container my-2">
@@ -160,6 +160,9 @@ export default {
                 "Libros",
                 "Otros",
             ],
+
+            isAdmin: false,
+            isLogged: false,
             articulos: [],
             errores: [],
             currentPage: 1,
@@ -171,6 +174,8 @@ export default {
 
     mounted() {
         this.getArticulos();
+        this.isAdmin = localStorage.getItem('isAdmin') === 'true';
+        this.isLogged = localStorage.getItem('isLogueado') === 'true';
 
     },
 

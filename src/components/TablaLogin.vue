@@ -109,6 +109,7 @@ export default {
                         this.mostrarAlerta("Bienvenido", "Sesión Iniciada", "success");
                         localStorage.setItem('isLogueado', 'true');
                         localStorage.setItem('isAdmin', 'true');
+                        localStorage.setItem("dni", usuario.dni)
                         this.$router.push({ name: 'inicio' }).then(() => {
                             window.location.reload(); // Recargar la página
                         });
@@ -117,7 +118,11 @@ export default {
                         this.mostrarAlerta("Bienvenido", "Sesión Iniciada", "success");
                         localStorage.setItem('isLogueado', 'true');
                         localStorage.setItem('isAdmin', 'false');
-                        this.$router.push({ name: 'inicio' }); // Redirigir a una ruta para usuarios normales
+                        localStorage.setItem("dni", usuario.dni)
+
+                        this.$router.push({ name: 'comentarios' }).then(() => {
+                            window.location.reload(); // Recargar la página
+                        }); // Redirigir a una ruta para usuarios normales
                     }
 
                 }
