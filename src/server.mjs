@@ -28,7 +28,7 @@ app.set('port', process.env.PORT || 5000);
 server.listen(app.get('port'),() =>{
     console.log(`Servidor en marcha en el puerto `, app.get('port'));
 })
-
+//mongoose.connect('mongodb://admin:abc123@localhost:27017/bbdd?authSource=admin')
 mongoose.connect('mongodb://root:renaido@localhost:27017/bbdd?authSource=admin')
     .then(db=>console.log('conectado a mongodb'))
     .catch(err=>console.log(err));  

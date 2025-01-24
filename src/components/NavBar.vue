@@ -74,7 +74,7 @@ export default {
         };
     },
 
-    mounted: async function() {
+    async mounted() {
         // Comprobar si el usuario está logueado al montar el componente
         await this.getUsuarios();
         this.isAdmin = localStorage.getItem('isAdmin') === 'true';
@@ -115,8 +115,9 @@ export default {
             // Eliminar los datos de sesión del localStorage
             localStorage.removeItem('isLogueado');
             localStorage.removeItem('isAdmin');
+            localStorage.removeItem('dni');
+            window.location.reload();
             this.$router.push({ name: 'login' }).catch(err => {
-                window.location.reload();
                 console.error(err); // Captura y logea errores para debugging
             });
         },

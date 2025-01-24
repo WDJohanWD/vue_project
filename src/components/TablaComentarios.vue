@@ -12,11 +12,12 @@
     <div class="container-fluid border p-4">
         <!-- FORMULARIO -->
         <form class="form-in-line">
+            <p v-if="!isLogged" class="text-danger"> Debes acceder para poder comentar</p>
             <div class="col-10 col-m-6 col-lg-8 mx-auto">
                 <div class="input-group-text mb-3">
                     <span class="input-group-text custom-span  me-2">Email: </span>
                     <input type="email" class="form-control sm w-75 me-2" placeholder="Email"
-                        v-model="comentario.clienteEmail" @blur="validarEmail(this.comentario.clienteEmail)" required />
+                        v-model="comentario.clienteEmail" @blur="validarEmail(this.comentario.clienteEmail)" required  readonly/>
 
                     <span class="input-group-text custom-span ms-2 me-2">Móvil:</span>
                     <input class="form-control sm w-25" type="text" placeholder="Número de móvil"
@@ -78,7 +79,7 @@
                                 <td class="align-middle">{{ comentario.clienteMensaje }}</td>
                                 <td class="align-middle">{{ comentario.clienteValor }}</td>
                                 <td v-if="isAdmin" class="text-center align-middle pale-yellow table-warning">
-                                    <div >
+                                    <div>
                                         <button class="btn btn-warning m-2" @click="seleccionarComentario(comentario)">
                                             <i class="fas fa-pencil-alt"></i>
                                         </button>
@@ -138,13 +139,14 @@ export default {
 
     },
 
-    mounted() {
+    async mounted() {
         this.getComentarios();
-        this.getUsuarios();
+        await this.getUsuarios();
         this.valoresIniciales();
         this.isAdmin = localStorage.getItem('isAdmin') === 'true';
         this.isLogged = localStorage.getItem('isLogueado') === 'true';
         this.dniUsuario = localStorage.getItem('dni');
+        this.comentario.clienteEmail = await this.obtenerNombre(this.dniUsuario);
 
 
     },
@@ -158,6 +160,14 @@ export default {
 
     },
     methods: {
+        async obtenerNombre(dni) {
+            const usuario = this.usuarios.find((user) => user.dni === dni);
+            if (usuario) {
+                return usuario.email;
+            } else {
+                console.error('Usuario no encontrado');
+            }
+        },
         siguientePagina() {
             if (this.currentPage * this.pageSize < this.comentarios.length) {
                 this.currentPage++;
@@ -326,32 +336,32 @@ export default {
                             this.mostrarAlerta("Error", "Tienes que aceptar las condiciones", "error")
 
                         } else {
-                            if (!this.isLogged){
+                            if (!this.isLogged) {
                                 this.mostrarAlerta("Error", "Tienes que estar logueado", "error")
-                            }else{
-                            const response = await fetch('http://localhost:3000/comentarios');
-                            if (!response.ok) {
-                                throw new Error('Error al obtener los comentarios: ' + response.statusText);
-                            }
-                            else {
-                                const crearResponse = await fetch('http://localhost:3000/comentarios', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                    },
-                                    body: JSON.stringify(this.comentario),
-                                });
-
-                                if (!crearResponse.ok) {
-                                    throw new Error('Error al guardar el comentario ' + crearResponse.statusText);
+                            } else {
+                                const response = await fetch('http://localhost:3000/comentarios');
+                                if (!response.ok) {
+                                    throw new Error('Error al obtener los comentarios: ' + response.statusText);
                                 }
+                                else {
+                                    const crearResponse = await fetch('http://localhost:3000/comentarios', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                        },
+                                        body: JSON.stringify(this.comentario),
+                                    });
 
-                                const nuevoCandidato = await crearResponse.json();
-                                this.comentarios.push(nuevoCandidato);
-                                this.mostrarAlerta('Aviso', 'Candidato grabado correctamente', 'success');
-                                this.limpiarFormComentario();
+                                    if (!crearResponse.ok) {
+                                        throw new Error('Error al guardar el comentario ' + crearResponse.statusText);
+                                    }
+
+                                    const nuevoComentario = await crearResponse.json();
+                                    this.comentarios.push(nuevoComentario);
+                                    this.mostrarAlerta('Aviso', 'Comentario grabado correctamente', 'success');
+                                    this.limpiarFormComentario();
+                                }
                             }
-                        }
                         }
                     } catch (error) {
                         console.error(error);
