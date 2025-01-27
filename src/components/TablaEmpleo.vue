@@ -1,7 +1,9 @@
 <template>
-  <div >
-    <h3 class="mt-3 text-center front-weight-bold"><i class="bi bi-person-workspace"></i> TRABAJA CON NOSOTROS <router-link to="/">
-        <button class="btn btn-customb"><i class="bi bi-arrow-return-left "></i></button></router-link></h3>
+  <div>
+    <h3 class="mt-3 text-center front-weight-bold"><i class="bi bi-person-workspace"></i> TRABAJA CON NOSOTROS
+      <router-link to="/">
+        <button class="btn btn-customb"><i class="bi bi-arrow-return-left "></i></button></router-link>
+    </h3>
   </div>
   <br>
   <div class="container-fluid border p-4">
@@ -39,8 +41,8 @@
 
           <span class="input-group-text custom-span ms-2 me-2">Modalidades </span>
           <div class="m-auto">
-            <input class="mx-2" type="radio" name="modalidad" v-model="candidato.modalidad" value="remoto" id="remoto"
-              ><label for="remoto">Remoto</label>
+            <input class="mx-2" type="radio" name="modalidad" v-model="candidato.modalidad" value="remoto"
+              id="remoto"><label for="remoto">Remoto</label>
             <input class="mx-2" type="radio" name="modalidad" v-model="candidato.modalidad" value="hibrido"
               id="hibrido"><label for="hibrido">Hibrido</label>
 
@@ -60,7 +62,8 @@
         <div class="input-group-text mb-3">
 
           <span class="input-group-text custom-span  me-2">CV (PDF) </span>
-          <input type="file" class="custom-file-input form-control" placeholder="Seleccionar un archivo (SOLO PDF)" accept=".pdf">
+          <input type="file" class="custom-file-input form-control" placeholder="Seleccionar un archivo (SOLO PDF)"
+            accept=".pdf" @change="handleFileChange" ref="fileInput">
 
         </div>
         <input type="checkbox" class="text-align-left" name="" id="" v-model="candidato.avisoLegal" required> He leido y
@@ -151,12 +154,13 @@ export default {
         avisoLegal: '',
         comentario: ''
       },
+      archivo: null,
       isAdmin: false,
       candidatos: [],
       departamentos: [],
       editMovil: false,
       currentPage: 1,
-      pageSize:5
+      pageSize: 5
     }
   },
 
@@ -165,13 +169,13 @@ export default {
     this.getDepartamentos();
     this.isAdmin = localStorage.getItem('isAdmin') === 'true';
   },
-  computed:{
-    
-  candidatosPorPagina() {
-    const inicio = (this.currentPage - 1) * this.pageSize;
-    return this.candidatos.slice(inicio, inicio + this.pageSize);
-  
-},
+  computed: {
+
+    candidatosPorPagina() {
+      const inicio = (this.currentPage - 1) * this.pageSize;
+      return this.candidatos.slice(inicio, inicio + this.pageSize);
+
+    },
 
   },
   methods: {
@@ -184,6 +188,109 @@ export default {
       if (this.currentPage > 1) {
         this.currentPage--;
       }
+    },
+
+    handleFileChange(event) {
+      this.archivo = event.target.files[0];
+      console.log(this.archivo);
+    },
+
+    async grabarCandidato() {
+      const resultado = await Swal.fire({
+        title: '¿Estás seguro?',
+        text: '¿Deseas grabar el candidato?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, Grabar',
+        cancelButtonText: 'No, no grabar',
+        cancelButtonColor: '#d33',
+        confirmButtonColor: '#3085d6',
+      });
+
+      if (resultado.isConfirmed) {
+        if (
+          this.candidato.apellidos &&
+          this.candidato.nombre &&
+          this.candidato.email &&
+          this.candidato.movil &&
+          this.candidato.departamento &&
+          this.candidato.modalidad &&
+          this.candidato.avisoLegal === true
+        ) {
+          try {
+            // Crear un objeto FormData
+            const formData = new FormData();
+            formData.append('apellidos', this.candidato.apellidos);
+            formData.append('nombre', this.candidato.nombre);
+            formData.append('email', this.candidato.email);
+            formData.append('movil', this.candidato.movil);
+            formData.append('departamento', this.candidato.departamento);
+            formData.append('modalidad', this.candidato.modalidad);
+            formData.append('avisoLegal', this.candidato.avisoLegal ? 'si' : 'no');
+            formData.append('comentario', this.candidato.comentario || '');
+            if (this.archivo) {
+              formData.append('archivo', this.archivo);
+            }
+
+            // Enviar el FormData al servidor
+            const crearResponse = await fetch('http://localhost:3000/candidatos', {
+              method: 'POST',
+              body: formData,
+            });
+
+            if (!crearResponse.ok) {
+              throw new Error('Error al guardar el candidato: ' + crearResponse.statusText);
+            }
+
+            const nuevoCandidato = await crearResponse.json();
+            this.candidatos.push(nuevoCandidato);
+            this.mostrarAlerta('Aviso', 'Candidato grabado correctamente', 'success');
+            this.limpiarFormulario();
+          } catch (error) {
+            console.error(error);
+            this.mostrarAlerta('Error', 'No se pudo grabar el candidato.', 'error');
+          }
+        } else if (this.candidato.avisoLegal === false) {
+          this.mostrarAlerta('Error', 'Por favor, acepta las Políticas de Privacidad.', 'error');
+        } else {
+          this.mostrarAlerta('Error', 'Por favor, completa todos los campos requeridos.', 'error');
+        }
+      }
+    },
+
+    limpiarCampos() {
+      // Limpiar los campos del formulario
+      this.candidato.apellidos = '';
+      this.candidato.nombre = '';
+      this.candidato.email = '';
+      this.candidato.movil = '';
+      this.candidato.departamento = '';
+      this.candidato.modalidad = '';
+      this.candidato.avisoLegal = '';
+      this.candidato.comentario = '';
+      this.archivo = null;
+      this.$refs.fileInput.value = null;
+
+      // Mostrar mensaje de éxito con SweetAlert
+      Swal.fire({
+        icon: 'info',
+        title: 'Campos limpiados',
+        text: 'Los campos del formulario se han limpiado correctamente.',
+      });
+    },
+
+    limpiarTarea() {
+      // Limpiar los campos del formulario
+      this.candidato.apellidos = '';
+      this.candidato.nombre = '';
+      this.candidato.email = '';
+      this.candidato.movil = '';
+      this.candidato.departamento = '';
+      this.candidato.modalidad = '';
+      this.candidato.avisoLegal = '';
+      this.candidato.comentario = '';
+      this.archivo = null;
+      this.$refs.fileInput.value = null;
     },
 
     async seleccionaCandidato(candidato) {
@@ -263,87 +370,7 @@ export default {
       this.editMovil = false;
     },
 
-    async grabarCandidato() {
-      const resultado = await Swal.fire({
-        title: '¿Estás seguro?',
-        text: '¿Deseas grabar el candidato?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Sí, Grabar',
-        cancelButtonText: 'No, no grabar',
-        cancelButtonColor: '#d33',
-        confirmButtonColor: '#3085d6',
-      })
 
-      if (resultado.isConfirmed) {
-      // Verificar si los campos requeridos están llenos
-      if (this.candidato.apellidos && this.candidato.nombre && this.candidato.email && this.candidato.movil && this.candidato.apellidos
-       && this.candidato.nombre && this.candidato.departamento && this.candidato.modalidad && this.candidato.avisoLegal==true) {
-        try {
-          delete this.candidato.id;
-          if (this.candidato.avisoLegal){
-            this.candidato.avisoLegal = "si";
-          }
-
-          const response = await fetch('http://localhost:3000/candidatos');
-          if (!response.ok) {
-            throw new Error('Error al obtener los candidatos: ' + response.statusText);
-          }
-/**
-          const candidatosExistentes = await response.json();
-
-          let candidatoExistente = candidatosExistentes.find(candidato => candidato.movil === this.candidato.movil);
-
-          if (candidatoExistente) {
-            candidatoExistente = this.candidato;
-            
-            
-            const actualizarResponse = await fetch(`http://localhost:3000/candidatos/${candidatoExistente.id}`, {
-              method: 'PUT',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-
-              body: JSON.stringify(candidatoExistente),
-            });
-
-            if (!actualizarResponse.ok) {
-              throw new Error('Error al actualizar el candidato: ' + actualizarResponse.statusText);
-            }
-
-            this.mostrarAlerta('Aviso', 'Candidato reactivado correctamente', 'success');
-            this.getCandidatos();
-          } 
-          */
-          else {
-            const crearResponse = await fetch('http://localhost:3000/candidatos', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(this.candidato),
-            });
-
-            if (!crearResponse.ok) {
-              throw new Error('Error al guardar el candidato ' + crearResponse.statusText);
-            }
-
-            const nuevoCandidato = await crearResponse.json();
-            this.candidatos.push(nuevoCandidato);
-            this.mostrarAlerta('Aviso', 'Candidato grabado correctamente', 'success');
-            this.limpiarFormulario();
-          }
-        } catch (error) {
-          console.error(error);
-          this.mostrarAlerta('Error', 'No se pudo grabar el candidato.', 'error');
-        }
-      } else if (this.candidato.avisoLegal == false) {
-        this.mostrarAlerta('Error', 'Por favor, acepta las Políticas de Privacidad.', 'error');
-      }   
-      else {
-        this.mostrarAlerta('Error', 'Por favor, completa todos los campos requeridos.', 'error');
-      }}
-    },
 
     async getDepartamentos() {
       try {
@@ -394,7 +421,7 @@ export default {
 
           if (candidatoExistente) {
 
-            await fetch(`http://localhost:3000/candidatos/${candidatoExistente.id}`, { 
+            await fetch(`http://localhost:3000/candidatos/${candidatoExistente.id}`, {
               method: "DELETE",
               headers: {
                 "Content-Type": "application/json",
@@ -402,7 +429,7 @@ export default {
             });
 
             this.mostrarAlerta("Aviso", "candidato dado de baja correctamente", "success");
-            this.getCandidatos(); 
+            this.getCandidatos();
 
           } else {
             this.mostrarAlerta("Error", "candidato no encontrado", "error");
