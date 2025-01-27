@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import PaginaInicio  from '@/components/PaginaInicio.vue'
 import TablaUsuarios from '@/components/TablaUsuarios.vue'
 import TablaContacto from '@/components/TablaContacto.vue'
 import TablaEmpleo    from '@/components/TablaEmpleo.vue'
@@ -10,13 +9,20 @@ import TablaComentarios from '@/components/TablaComentarios.vue'
 import TablaArticulos from '@/components/TablaArticulos.vue'
 import TablaRegistro from '@/components/TablaRegistro.vue'
 import TablaLogin from '@/components/TablaLogin.vue'
+import TablaGestion from '@/components/TablaGestion.vue'
+import PaginaInicio from '@/components/PaginaInicio.vue'
 
 
 const routes = [
   {
-    path: '/',
+    path: '/inicio',
     name: 'inicio',
     component: PaginaInicio,
+  },
+  {
+    path: '/',
+    name: 'gestion',
+    component: TablaGestion,
     meta: {requiresAdmin: true}
   },
   {

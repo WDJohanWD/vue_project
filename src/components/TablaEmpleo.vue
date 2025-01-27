@@ -60,7 +60,7 @@
         <div class="input-group-text mb-3">
 
           <span class="input-group-text custom-span  me-2">CV (PDF) </span>
-          <input type="file" class="form-control sm w-100">
+          <input type="file" class="custom-file-input form-control" placeholder="Seleccionar un archivo (SOLO PDF)" accept=".pdf">
 
         </div>
         <input type="checkbox" class="text-align-left" name="" id="" v-model="candidato.avisoLegal" required> He leido y
@@ -394,7 +394,7 @@ export default {
 
           if (candidatoExistente) {
 
-            await fetch(`http://localhost:3000/candidatos/${candidatoExistente.id}`, { // URL interpolada correctamente
+            await fetch(`http://localhost:3000/candidatos/${candidatoExistente.id}`, { 
               method: "DELETE",
               headers: {
                 "Content-Type": "application/json",
@@ -402,7 +402,7 @@ export default {
             });
 
             this.mostrarAlerta("Aviso", "candidato dado de baja correctamente", "success");
-            this.getCandidatos(); // Actualizar lista de candidatos
+            this.getCandidatos(); 
 
           } else {
             this.mostrarAlerta("Error", "candidato no encontrado", "error");

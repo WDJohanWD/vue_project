@@ -7,8 +7,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <router-link to="/inicio" class="nav-link text-white" exact-active-class="active">Inicio</router-link>
+                    </li>
                     <li v-if="isAdmin" class="nav-item">
-                        <router-link to="/" class="nav-link text-white" exact-active-class="active">Inicio</router-link>
+                        <router-link to="/" class="nav-link text-white" exact-active-class="active">Gestión</router-link>
                     </li>
                     <li v-if="isAdmin" class="nav-item">
                         <router-link to="/usuarios" class="nav-link text-white"

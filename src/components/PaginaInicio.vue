@@ -1,31 +1,29 @@
 <template>
-  <h3 class="mt-3 text-center front-weight-bold"><i class="bi bi-wrench-adjustable"></i> Panel de Gestión</h3>
-
-  <div class="grid-box">
-    <div class="my-5">
-      <button class="btn btn-primary me-2 w-25"><router-link to="/usuarios"  class="nav-link text-white" exact-active-class="active"> Gestión de Usuarios</router-link></button>
-      <button class="btn btn-primary me-2 w-25"><router-link to="/empleo"  class="nav-link text-white" exact-active-class="active"> Gestión Empleo</router-link></button>
-    </div>
-    <div class="my-5">
-      <button class="btn btn-primary me-2 w-25" ><router-link to="/comentarios"  class="nav-link text-white" exact-active-class="active">Gestión de Comentarios</router-link></button>
-      <button class="btn btn-primary me-2 w-25" ><router-link to="/articulos" class="nav-link text-white" > Gestión de Artículos</router-link></button>
-    </div>
-    <div class="my-5">
-      <button class="btn btn-dark me-2 w-25" disabled>En construción</button>
-      <button class="btn btn-dark me-2 w-25" disabled>En construción</button>
-    </div>
+  <div class="pagina-inicio">
+    <h1>Bienvenido a la Página de Inicio</h1>
+    <p>Esta es la página principal de nuestra aplicación.</p>
   </div>
 </template>
 
 <script>
-
 export default {
-    name: 'PaginaInicio',
-    components: {
-    }
+  name: 'PaginaInicio'
 }
 </script>
 
-<style>
+<style scoped>
+.pagina-inicio {
+  text-align: center;
+  margin-top: 50px;
+}
 
+.pagina-inicio h1 {
+  font-size: 2em;
+  color: #333;
+}
+
+.pagina-inicio p {
+  font-size: 1.2em;
+  color: #666;
+}
 </style>
