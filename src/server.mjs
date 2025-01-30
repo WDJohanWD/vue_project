@@ -5,25 +5,27 @@ import morgan from 'morgan';
 import mongoose from 'mongoose';
 import rutas from '../src/router/rutas.mjs';
 import cors from 'cors';
+import multer from 'multer';
 //Se crea el servidor
 const app = express();
 
 const server = http.createServer(app);
 
 app.use(cors());
+app.use(morgan('dev'));
 app.use(express.json());
 app.use(rutas);
 
+const upload = multer({ dest: 'uploads/' });
+app.use(upload.single('archivo'));
 
-app.use(morgan('dev'));
-
+//elegimos puerto
+app.set('port', process.env.PORT || 5000);
 //peticiones
 app.get('/', (req,res) =>{
     res.send('Servidor corriendo');
 });
 
-//elegimos puerto
-app.set('port', process.env.PORT || 5000);
 
 server.listen(app.get('port'),() =>{
     console.log(`Servidor en marcha en el puerto `, app.get('port'));
