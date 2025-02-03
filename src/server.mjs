@@ -14,6 +14,7 @@ const app = express();
 const server = http.createServer(app);
 
 app.use(cors());
+app.use(morgan('dev'));
 app.use(express.json());
 app.use(rutas);
 app.use(morgan('dev'));
@@ -27,8 +28,6 @@ app.get('/', (req,res) =>{
     res.send('Servidor corriendo');
 });
 
-//elegimos puerto
-app.set('port', process.env.PORT || 5000);
 
 server.listen(app.get('port'),() =>{
     console.log(`Servidor en marcha en el puerto `, app.get('port'));
