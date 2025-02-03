@@ -224,7 +224,7 @@ export default {
             formData.append('nombre', this.candidato.nombre);
             formData.append('email', this.candidato.email);
             formData.append('movil', this.candidato.movil);
-            formData.append('departamento', this.candidato.departamento);
+            formData.append('departamento', this.candidato.departamento.id);
             formData.append('modalidad', this.candidato.modalidad);
             formData.append('avisoLegal', this.candidato.avisoLegal ? 'si' : 'no');
             formData.append('comentario', this.candidato.comentario || '');
@@ -242,7 +242,9 @@ export default {
               throw new Error('Error al guardar el candidato: ' + crearResponse.statusText);
             }
 
-            const nuevoCandidato = await crearResponse.json();
+            const nuevoCandidato = await crearResponse.json().catch(error => {
+              throw new Error('Error al parsear la respuesta JSON: ' + error.message);
+            });
             this.candidatos.push(nuevoCandidato);
             this.mostrarAlerta('Aviso', 'Candidato grabado correctamente', 'success');
             this.limpiarFormulario();
@@ -279,19 +281,7 @@ export default {
       });
     },
 
-    limpiarTarea() {
-      // Limpiar los campos del formulario
-      this.candidato.apellidos = '';
-      this.candidato.nombre = '';
-      this.candidato.email = '';
-      this.candidato.movil = '';
-      this.candidato.departamento = '';
-      this.candidato.modalidad = '';
-      this.candidato.avisoLegal = '';
-      this.candidato.comentario = '';
-      this.archivo = null;
-      this.$refs.fileInput.value = null;
-    },
+    
 
     async seleccionaCandidato(candidato) {
       try {
