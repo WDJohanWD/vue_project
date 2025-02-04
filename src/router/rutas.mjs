@@ -69,22 +69,23 @@ rutas.post('/subirimg', uploadImage.single('image'), (req, res) => {
 });
 // Ruta para gestionar la subida de archivos
 rutas.post('/subircv', uploadCV.single('archivo'), (req, res) => {
+    console.log('Datos recibidos:', req.body);  // <-- Verifica qué datos llegan
     console.log('Archivo recibido:', req.file);
-    console.log('Candidato ID:', req.body.candidatoId);
+
     if (!req.file) {
-      return res.status(400).json({ mensaje: 'No se subió ningún archivo' });
+        return res.status(400).json({ mensaje: 'No se subió ningún archivo' });
     }
-    // Responder con el archivo subido y su ubicación
+
     res.status(200).json({
-      mensaje: 'Archivo subido con éxito',
-      archivo: req.file,
+        mensaje: 'Archivo subido con éxito',
+        archivo: req.file,
     });
   });
 
 
 rutas.get('/articulos', async (req, res) => {
     try{
-        const articulos = await Articulo.find({});
+        const articulos = await Articulo.default.find({});
         res.json(articulos);
 
     } catch(error){
@@ -95,7 +96,7 @@ rutas.get('/articulos', async (req, res) => {
 
 rutas.post('/articulos', async (req, res) => {
     try{
-        const articulo = new Articulo(req.body);
+        const articulo = new Articulo.default(req.body);
         await articulo.save();
         res.status(201).json(articulo);
         console.log("Artículo guardado correctamente");
@@ -118,7 +119,7 @@ rutas.put('/articulos/:id', async (req, res) => {
         }
 
         // Intentar encontrar y actualizar el artículo
-        const articulo = await Articulo.findByIdAndUpdate(id, req.body, { new: true });
+        const articulo = await Articulo.default.findByIdAndUpdate(id, req.body, { new: true });
 
         // Si no se encuentra el artículo
         if (!articulo) {
@@ -145,7 +146,7 @@ rutas.delete('/articulos/:id', async (req, res) => {
         }
 
         // Intentar encontrar y eliminar el artículo
-        const articulo = await Articulo.findByIdAndDelete(id);
+        const articulo = await Articulo.default.findByIdAndDelete(id);
 
         // Si no se encuentra el artículo
         if (!articulo) {

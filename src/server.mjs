@@ -14,11 +14,12 @@ const server = http.createServer(app);
 
 
 app.use(cors({
-    origin: ['http://localhost:8080', 'http://localhost:5000'],  // Permitir el frontend
+    origin: ['http://localhost:8080', 'http://localhost:5000', 'http://localhost:3000'],  
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true // Permitir cookies y autenticación
+    credentials: true 
 }));
+
 
 app.options('*', cors());  // Habilita CORS para preflight
 app.use(express.urlencoded({ extended: true })); // ¡IMPORTANTE!
@@ -61,15 +62,27 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({
-    storage: storage,
+    storage: multer.diskStorage({
+        destination: (req, file, cb) => {
+            const uploadDir = 'uploads/cv';
+            if (!fs.existsSync(uploadDir)) {
+                fs.mkdirSync(uploadDir, { recursive: true });
+            }
+            cb(null, uploadDir);
+        },
+        filename: (req, file, cb) => {
+            const filename = `${Date.now()}-${file.originalname}`;
+            cb(null, filename);
+        }
+    }),
     fileFilter: (req, file, cb) => {
-        const allowedTypes = ['application/pdf'];
-        if (!allowedTypes.includes(file.mimetype)) {
-            return cb(new Error('Tipo de archivo no permitido'), false);
+        if (file.mimetype !== 'application/pdf') {
+            return cb(new Error('Solo se permiten archivos PDF'), false);
         }
         cb(null, true);
     }
 });
+
 
 // Ruta para gestionar la subida de archivos
 app.post('/subircv', upload.single('archivo'), (req, res) => {

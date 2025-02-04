@@ -97,7 +97,7 @@
                 <td class="align-middle ">{{ candidato.apellidos }}</td>
                 <td class="align-middle">{{ candidato.nombre }}</td>
                 <td class="align-middle">{{ candidato.movil }}</td>
-                <td class="align-middle">{{ candidato.departamento.nm }}</td>
+                <td class="align-middle">{{ candidato.departamento }}</td>
 
                 <td class="align-middle">{{ candidato.modalidad }}</td>
                 <td class="text-center align-middle pale-yellow table-warning">
@@ -154,7 +154,7 @@ export default {
         avisoLegal: '',
         comentario: ''
       },
-      archivo: null,
+      cvFile: null,
       isAdmin: false,
       candidatos: [],
       departamentos: [],
@@ -191,8 +191,8 @@ export default {
     },
 
     handleFileChange(event) {
-      this.archivo = event.target.files[0];
-      console.log(this.archivo);
+      this.cvFile = event.target.files[0];
+      console.log(this.cvFile);
     },
 
     async grabarCandidato() {
@@ -214,8 +214,9 @@ export default {
           this.candidato.email &&
           this.candidato.movil &&
           this.candidato.departamento &&
-          this.candidato.modalidad 
-        ) {try {
+          this.candidato.modalidad
+        ) {
+          try {
             // Validaciones
             if (!this.candidato.apellidos || !this.candidato.nombre || !this.candidato.email || !this.candidato.movil
               || !this.candidato.departamento || !this.candidato.modalidad) {
@@ -224,7 +225,7 @@ export default {
             }
 
             // Política de privacidad
-            
+
             // **Paso 1: Enviar los datos del candidato**
             const datos = {
               apellidos: this.candidato.apellidos,
@@ -251,24 +252,28 @@ export default {
             }
 
             // Paso 2: Subir el archivo PDF (si existe)
-         
+
             if (this.cvFile) {
 
               const formData = new FormData();
               const candidatoId = this.candidato.movil || 'default';
               const nuevoArchivo = new File([this.cvFile], `${candidatoId}.pdf`, { type: this.cvFile.type });
               formData.append('archivo', nuevoArchivo);
-              formData.append('candidatoId', this.candidato.movil) 
+              formData.append('candidatoId', this.candidato.movil)
               console.log(nuevoArchivo)
               const fileResponse = await fetch('http://localhost:5000/subircv', {
                 method: 'POST',
                 body: formData,
-                credentials : 'include'
+                headers: {
+                  'Accept': 'application/json'
+                },
+                mode: 'cors'
               });
-            
+
+
               if (!fileResponse.ok) {
                 throw new Error('Error al subir el archivo');
-              }else{
+              } else {
                 console.log('hubo respuesta:', fileResponse);
               }
 
@@ -290,7 +295,6 @@ export default {
               modalidad: '',
               comentarios: '',
             };
-            this.$refs.fileInput.value = null;
             this.isChecked = false;
 
           } catch (error) {
@@ -315,8 +319,7 @@ export default {
       this.candidato.modalidad = '';
       this.candidato.avisoLegal = '';
       this.candidato.comentario = '';
-      this.archivo = null;
-      this.$refs.fileInput.value = null;
+      this.cvFile = null;
 
       // Mostrar mensaje de éxito con SweetAlert
       Swal.fire({
@@ -326,7 +329,7 @@ export default {
       });
     },
 
-    
+
 
     async seleccionaCandidato(candidato) {
       try {

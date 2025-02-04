@@ -32953,134 +32953,118 @@
   ],
   "candidatos": [
     {
-      "id": "ee21",
-      "apellidos": "esteban",
-      "nombre": "estebomba",
-      "email": "estebanco@mail.com",
-      "movil": "777777777",
-      "departamento": {
-        "id": "01002",
-        "nm": "compras"
-      },
-      "modalidad": "hibrido",
-      "avisoLegal": "si",
-      "comentario": ""
-    },
-    {
-      "id": "e33b",
+      "id": "e578",
       "apellidos": "Aponte",
       "nombre": "David",
       "email": "abuelo12@mail.com",
       "movil": "748563291",
-      "departamento": {
-        "id": "01004",
-        "nm": "logistica"
-      },
+      "departamento": "logistica",
       "modalidad": "hibrido",
-      "avisoLegal": "si",
-      "comentario": ""
+      "comentario": "",
+      "avisolegal": "si"
     },
     {
-      "id": "3ee2",
-      "apellidos": "moreira",
-      "nombre": "cata",
-      "email": "catamoreira@mail.com",
-      "movil": "746985321",
-      "departamento": {
-        "id": "01002",
-        "nm": "compras"
-      },
+      "id": "006f",
+      "apellidos": "Aponte",
+      "nombre": "David",
+      "email": "abuelo12@mail.com",
+      "movil": "748563291",
+      "departamento": "logistica",
       "modalidad": "hibrido",
-      "avisoLegal": "si",
-      "comentario": ""
+      "comentario": "",
+      "avisolegal": "si"
     },
     {
-      "id": "1bd3",
-      "apellidos": "Martinex",
-      "nombre": "Paul",
-      "email": "eliot@gmail.com",
-      "movil": "745213698",
-      "departamento": {
-        "id": "01",
-        "nm": "ventas"
-      },
-      "modalidad": "hibrido",
-      "avisoLegal": "si",
-      "comentario": ""
-    },
-    {
-      "id": "cb74",
-      "apellidos": "Garcia",
-      "nombre": "Adrian",
-      "email": "adrigg@mail.com",
-      "movil": "756329841",
-      "departamento": {
-        "id": "01003",
-        "nm": "IT"
-      },
-      "modalidad": "presencial",
-      "avisoLegal": "si",
-      "comentario": ""
-    },
-    {
-      "id": "5d61",
-      "apellidos": "Elio",
-      "nombre": "Oxi",
-      "email": "Oxiel@mail.com",
-      "movil": "745698321",
-      "departamento": {
-        "id": "01",
-        "nm": "ventas"
-      },
+      "id": "80f7",
+      "apellidos": "dasd",
+      "nombre": "asda",
+      "email": "sdasd@dasd.com",
+      "movil": "753629841",
+      "departamento": "logistica",
       "modalidad": "remoto",
-      "avisoLegal": "si",
-      "comentario": ""
-    },
-    {
-      "id": "ae3b",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": {
-        "id": "01002",
-        "nm": "compras"
-      },
-      "modalidad": "hibrido",
-      "avisoLegal": "si",
-      "comentario": ""
-    },
-    {
-      "id": "6fbc",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "logistica",
-      "modalidad": "hibrido",
       "comentario": "",
       "avisolegal": "si"
     },
     {
-      "id": "d3fe",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "logistica",
-      "modalidad": "hibrido",
-      "comentario": "",
-      "avisolegal": "si"
-    },
-    {
-      "id": "7f43",
+      "id": "9651",
       "apellidos": "Ma",
       "nombre": "ca",
       "email": "jsad@ccs.com",
       "movil": "748596321",
-      "departamento": "compras",
       "modalidad": "remoto",
       "comentario": "e",
+      "avisolegal": "si"
+    },
+    {
+      "id": "bb79",
+      "apellidos": "Ma",
+      "nombre": "ca",
+      "email": "jsad@ccs.com",
+      "movil": "748596321",
+      "departamento": "logistica",
+      "modalidad": "remoto",
+      "comentario": "e",
+      "avisolegal": "si"
+    },
+    {
+      "id": "c319",
+      "apellidos": "Ma",
+      "nombre": "ca",
+      "email": "jsad@ccs.com",
+      "movil": "748596321",
+      "modalidad": "remoto",
+      "comentario": "e",
+      "avisolegal": "si"
+    },
+    {
+      "id": "4763",
+      "apellidos": "Ma",
+      "nombre": "ca",
+      "email": "jsad@ccs.com",
+      "movil": "748596321",
+      "modalidad": "remoto",
+      "comentario": "e",
+      "avisolegal": "si"
+    },
+    {
+      "id": "906a",
+      "apellidos": "Ma",
+      "nombre": "ca",
+      "email": "jsad@ccs.com",
+      "movil": "748596321",
+      "modalidad": "remoto",
+      "comentario": "e",
+      "avisolegal": "si"
+    },
+    {
+      "id": "2b56",
+      "apellidos": "Aponte",
+      "nombre": "David",
+      "email": "abuelo12@mail.com",
+      "movil": "748563291",
+      "departamento": "compras",
+      "modalidad": "hibrido",
+      "comentario": "",
+      "avisolegal": "si"
+    },
+    {
+      "id": "d397",
+      "apellidos": "Aponte",
+      "nombre": "David",
+      "email": "abuelo12@mail.com",
+      "movil": "748563291",
+      "modalidad": "hibrido",
+      "comentario": "",
+      "avisolegal": "si"
+    },
+    {
+      "id": "6e84",
+      "apellidos": "Aponte",
+      "nombre": "David",
+      "email": "abuelo12@mail.com",
+      "movil": "748563291",
+      "modalidad": "hibrido",
+      "comentario": "",
       "avisolegal": "si"
     }
   ],
