@@ -214,43 +214,88 @@ export default {
           this.candidato.email &&
           this.candidato.movil &&
           this.candidato.departamento &&
-          this.candidato.modalidad &&
-          this.candidato.avisoLegal === true
-        ) {
-          try {
-            // Crear un objeto FormData
-            const formData = new FormData();
-            formData.append('apellidos', this.candidato.apellidos);
-            formData.append('nombre', this.candidato.nombre);
-            formData.append('email', this.candidato.email);
-            formData.append('movil', this.candidato.movil);
-            formData.append('departamento', this.candidato.departamento.id);
-            formData.append('modalidad', this.candidato.modalidad);
-            formData.append('avisoLegal', this.candidato.avisoLegal ? 'si' : 'no');
-            formData.append('comentario', this.candidato.comentario || '');
-            if (this.archivo) {
-              formData.append('archivo', this.archivo);
+          this.candidato.modalidad 
+        ) {try {
+            // Validaciones
+            if (!this.candidato.apellidos || !this.candidato.nombre || !this.candidato.email || !this.candidato.movil
+              || !this.candidato.departamento || !this.candidato.modalidad) {
+              this.mostrarAlerta("Aviso", "Todos los campos obligatorios", "warning");
+              return; // Detiene la ejecución si falta algún campo
             }
 
-            // Enviar el FormData al servidor
-            const crearResponse = await fetch('http://localhost:3000/candidatos', {
+            // Política de privacidad
+            
+            // **Paso 1: Enviar los datos del candidato**
+            const datos = {
+              apellidos: this.candidato.apellidos,
+              nombre: this.candidato.nombre,
+              email: this.candidato.email,
+              movil: this.candidato.movil,
+              departamento: this.candidato.departamento.nm,
+              modalidad: this.candidato.modalidad,
+              comentario: this.candidato.comentario,
+              avisolegal: "si"
+            };
+
+            const responseCandidato = await fetch('http://localhost:3000/candidatos', {
               method: 'POST',
-              body: formData,
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(datos), // Enviamos los datos como JSON
             });
 
-            if (!crearResponse.ok) {
-              throw new Error('Error al guardar el candidato: ' + crearResponse.statusText);
+            if (!responseCandidato.ok) {
+              const errorData = await responseCandidato.json();
+              throw new Error(`Error al guardar los datos del candidato: ${errorData.message || 'Desconocido'}`);
             }
 
-            const nuevoCandidato = await crearResponse.json().catch(error => {
-              throw new Error('Error al parsear la respuesta JSON: ' + error.message);
-            });
-            this.candidatos.push(nuevoCandidato);
-            this.mostrarAlerta('Aviso', 'Candidato grabado correctamente', 'success');
-            this.limpiarFormulario();
+            // Paso 2: Subir el archivo PDF (si existe)
+         
+            if (this.cvFile) {
+
+              const formData = new FormData();
+              const candidatoId = this.candidato.movil || 'default';
+              const nuevoArchivo = new File([this.cvFile], `${candidatoId}.pdf`, { type: this.cvFile.type });
+              formData.append('archivo', nuevoArchivo);
+              formData.append('candidatoId', this.candidato.movil) 
+              console.log(nuevoArchivo)
+              const fileResponse = await fetch('http://localhost:5000/subircv', {
+                method: 'POST',
+                body: formData,
+                credentials : 'include'
+              });
+            
+              if (!fileResponse.ok) {
+                throw new Error('Error al subir el archivo');
+              }else{
+                console.log('hubo respuesta:', fileResponse);
+              }
+
+
+              const fileData = await fileResponse.json();
+              console.log('Archivo subido correctamente:', fileData);
+            }
+            // Si todo fue bien
+            this.mostrarAlerta("Aviso", "Datos y archivo enviados correctamente", "success");
+            this.getCandidatos(); // Si necesitas actualizar la lista de candidatos
+
+            // Restablecer formulario
+            this.candidato = {
+              apellidos: '',
+              nombre: '',
+              email: '',
+              movil: '',
+              departamento: '',
+              modalidad: '',
+              comentarios: '',
+            };
+            this.$refs.fileInput.value = null;
+            this.isChecked = false;
+
           } catch (error) {
-            console.error(error);
-            this.mostrarAlerta('Error', 'No se pudo grabar el candidato.', 'error');
+            console.error('Error:', error);
+            //this.mostrarAlerta("Error", error.message, "error");  // Mostrar el error en la alerta
           }
         } else if (this.candidato.avisoLegal === false) {
           this.mostrarAlerta('Error', 'Por favor, acepta las Políticas de Privacidad.', 'error');
