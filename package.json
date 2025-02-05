@@ -2,6 +2,7 @@
   "name": "apontejohan",
   "version": "0.1.0",
   "private": true,
+
   "scripts": {
     "dev": "nodemon ./src/server.mjs --ignore ./uploads/* --watch src --exec babel-node",
     "serve": "vue-cli-service serve",
