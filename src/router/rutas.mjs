@@ -18,25 +18,20 @@ const __dirname = dirname(__filename);
 
 
 // Configuración de multer
-// Función para crear la configuración de almacenamiento (storage)
 const createStorage = (folder) => multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, folder);  // Se define la carpeta de destino dinámicamente
     },
     filename: function (req, file, cb) {
-        cb(null, Date.now() + path.extname(file.originalname));  // Nombre único para cada archivo
+        //const candidatoId = req.body.candidatoId || Date.now();  // Si no se envía candidatoId, usar la fecha actual como nombre
+        const fileExtension = path.extname(file.originalname);  // Obtener la extensión del archivo
+        const originalName = file.originalname.split('.')[0];  // Obtener el nombre original sin la extensión
+        const filename = `${originalName}${fileExtension}`;  // Ejemplo: 1234567890-nombreOriginal.pdf
+        cb(null, filename);  // Se define el nombre del archivo
     }
 });
 
-// Validar que el archivo sea PNG o JPG (para imágenes)
-const imageFileFilter = (req, file, cb) => {
-    const ext = path.extname(file.originalname).toLowerCase();
-    if (ext === '.png' || ext === '.jpg' || ext === '.jpeg') {
-        cb(null, true);  // Aceptar el archivo
-    } else {
-        cb(new Error('Solo se permiten archivos PNG o JPG'), false);  // Rechazar el archivo
-    }
-};
+
 
 // Validar que el archivo sea PDF (para los CV)
 const cvFileFilter = (req, file, cb) => {
@@ -49,29 +44,22 @@ const cvFileFilter = (req, file, cb) => {
 };
 
 // Ruta para subir imágenes
-const uploadImage = multer({
-    storage: createStorage('uploads/img'),  // Carpeta de destino para imágenes
-    fileFilter: imageFileFilter,  // Filtro para imágenes
-    limits: { fileSize: 5 * 1024 * 1024 }  // Límite de 5MB
-});
+
 
 // Ruta para subir CVs (solo PDF)
 const uploadCV = multer({
-    storage: createStorage('uploads/cv'),  // Carpeta de destino para CVs
-    fileFilter: cvFileFilter,  // Filtro para PDFs
+    storage: createStorage('uploads/cv'),
+    fileFilter: cvFileFilter,  // Carpeta de destino para CVs
     limits: { fileSize: 10 * 1024 * 1024 }  // Límite de 10MB
 });
 
 // Definir rutas para subir imágenes y CVs
-rutas.post('/subirimg', uploadImage.single('image'), (req, res) => {
-    // Manejar la subida de imagen
-    res.status(200).json({ message: 'Imagen subida correctamente', file: req.file });
-});
+
 // Ruta para gestionar la subida de archivos
 rutas.post('/subircv', uploadCV.single('archivo'), (req, res) => {
-    console.log('Datos recibidos:', req.body);  // <-- Verifica qué datos llegan
+    console.log('Candidato ID recibido en backend:', req.body.candidatoId); // Debería mostrar el candidatoId que enviaste
     console.log('Archivo recibido:', req.file);
-
+    
     if (!req.file) {
         return res.status(400).json({ mensaje: 'No se subió ningún archivo' });
     }
@@ -80,7 +68,8 @@ rutas.post('/subircv', uploadCV.single('archivo'), (req, res) => {
         mensaje: 'Archivo subido con éxito',
         archivo: req.file,
     });
-  });
+});
+
 
 
 rutas.get('/articulos', async (req, res) => {

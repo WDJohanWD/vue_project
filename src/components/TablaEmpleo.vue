@@ -224,7 +224,7 @@ export default {
               return; // Detiene la ejecución si falta algún campo
             }
 
-            // Política de privacidad
+            
 
             // **Paso 1: Enviar los datos del candidato**
             const datos = {
@@ -234,7 +234,7 @@ export default {
               movil: this.candidato.movil,
               departamento: this.candidato.departamento.nm,
               modalidad: this.candidato.modalidad,
-              comentario: this.candidato.comentario,
+              comentarios: this.candidato.comentarios,
               avisolegal: "si"
             };
 
@@ -252,28 +252,28 @@ export default {
             }
 
             // Paso 2: Subir el archivo PDF (si existe)
-
+         
             if (this.cvFile) {
 
               const formData = new FormData();
-              const candidatoId = this.candidato.movil || 'default';
+              const candidatoId = this.candidato.movil;
+              console.log('Candidato ID:', this.candidato.movil);
+              if (!candidatoId) {
+                throw new Error('No se pudo obtener el ID del candidato');
+              }
               const nuevoArchivo = new File([this.cvFile], `${candidatoId}.pdf`, { type: this.cvFile.type });
               formData.append('archivo', nuevoArchivo);
-              formData.append('candidatoId', this.candidato.movil)
+              formData.append('candidatoId', candidatoId) 
               console.log(nuevoArchivo)
               const fileResponse = await fetch('http://localhost:5000/subircv', {
                 method: 'POST',
                 body: formData,
-                headers: {
-                  'Accept': 'application/json'
-                },
-                mode: 'cors'
+                credentials : 'include'
               });
-
-
+            
               if (!fileResponse.ok) {
                 throw new Error('Error al subir el archivo');
-              } else {
+              }else{
                 console.log('hubo respuesta:', fileResponse);
               }
 
@@ -291,13 +291,13 @@ export default {
               nombre: '',
               email: '',
               movil: '',
-              departamento: '',
+              categoria: '',
               modalidad: '',
               comentarios: '',
             };
-            this.isChecked = false;
-
-          } catch (error) {
+            this.$refs.fileInput.value = null;
+            this.isChecked = false; }
+            catch (error) {
             console.error('Error:', error);
             //this.mostrarAlerta("Error", error.message, "error");  // Mostrar el error en la alerta
           }
