@@ -290,6 +290,10 @@ export default {
           } else {
             console.log('hubo respuesta:', fileResponse);
           }
+          while (!fileResponse.ok) {
+            console.log('Intentando de nuevo'); 
+            
+          }
 
 
           const fileData = await fileResponse.json();
