@@ -32953,96 +32953,6 @@
   ],
   "candidatos": [
     {
-      "id": "80f7",
-      "apellidos": "dasd",
-      "nombre": "asda",
-      "email": "sdasd@dasd.com",
-      "movil": "753629841",
-      "departamento": "logistica",
-      "modalidad": "remoto",
-      "comentario": "",
-      "avisolegal": "si"
-    },
-    {
-      "id": "f3a8",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "fa3e",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "6966",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "d593",
-      "apellidos": "dasd",
-      "nombre": "asda",
-      "email": "sdasd@dasd.com",
-      "movil": "753629841",
-      "departamento": "juridico",
-      "modalidad": "remoto"
-    },
-    {
-      "id": "6bd5",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "7d8e",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "f3a8",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "compras",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "d593",
-      "apellidos": "dasd",
-      "nombre": "asda",
-      "email": "sdasd@dasd.com",
-      "movil": "753629841",
-      "departamento": "compras",
-      "modalidad": "remoto"
-    },
-    {
-      "id": "d593",
-      "apellidos": "dasd",
-      "nombre": "asda",
-      "email": "sdasd@dasd.com",
-      "movil": "753629841",
-      "modalidad": "remoto"
-    },
-    {
       "id": "fdfa",
       "apellidos": "sdefu",
       "nombre": "ishdfoiofdio",
@@ -33058,51 +32968,38 @@
       "nombre": "ishdfoiofdio",
       "email": "sdihfsi@fdpiajfid.como",
       "movil": "695874321",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": ""
-    },
-    {
-      "id": "d593",
-      "apellidos": "dasd",
-      "nombre": "asda",
-      "email": "sdasd@dasd.com",
-      "movil": "753629841",
-      "departamento": "compras",
-      "modalidad": "remoto"
-    },
-    {
-      "id": "9e8a",
-      "apellidos": "b",
-      "nombre": "b",
-      "email": "b@mail.com",
-      "movil": "777777777",
-      "departamento": "IT",
-      "modalidad": "remoto",
-      "comentarios": ""
-    },
-    {
-      "id": "fa3e",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "409a",
-      "apellidos": "dfs",
-      "nombre": "das",
-      "email": "asda@dasd.com",
-      "movil": "698532147",
       "departamento": {
-        "id": "01",
-        "nm": "ventas"
+        "id": "01003",
+        "nm": "IT"
       },
       "modalidad": "hibrido",
-      "comentarios": "",
-      "PDFfile": "698532147.pdf"
+      "comentarios": ""
+    },
+    {
+      "id": "fdfa",
+      "apellidos": "sdefu",
+      "nombre": "ishdfoiofdio",
+      "email": "sdihfsi@fdpiajfid.como",
+      "movil": "695874321",
+      "departamento": {
+        "id": "01003",
+        "nm": "IT"
+      },
+      "modalidad": "hibrido",
+      "comentarios": ""
+    },
+    {
+      "id": "fdfa",
+      "apellidos": "sdefuasas",
+      "nombre": "ishdfoiofdiosas",
+      "email": "sdihfsi@fdpiajfid.comosasa",
+      "movil": "695874322",
+      "departamento": {
+        "id": "01004",
+        "nm": "logistica"
+      },
+      "modalidad": "hibrido",
+      "comentarios": ""
     }
   ],
   "departamentos": [

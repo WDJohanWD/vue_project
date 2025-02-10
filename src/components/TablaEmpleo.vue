@@ -34,7 +34,7 @@
           <select name="departamento" class="form-control sm w-50" v-model="candidato.departamento">
             <option value="" disabled>Departamento</option>
             <option v-for="departamento in departamentos" :key="departamento.id" :value="departamento">
-              {{ departamento.nm }}
+              {{ departamento }}
             </option>
           </select>
 
@@ -94,7 +94,7 @@
                 <td class="align-middle">{{ candidato.apellidos }}</td>
                 <td class="align-middle text-start">{{ candidato.nombre }}</td>
                 <td class="align-middle">{{ candidato.movil }}</td>
-                <td class="align-middle">{{ candidato.departamento.nm }}</td>
+                <td class="align-middle">{{ candidato.departamento}}</td>
                 <td class="align-middle">{{ candidato.modalidad }}</td>
                 <td class="text-center align-middle pale-yellow table-warning">
                   <div>
