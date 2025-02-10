@@ -1735,7 +1735,7 @@
       "nm": "Zurgena"
     },
     {
-      "id": "05001",
+      "id": "05000",
       "nm": "Adanero"
     },
     {
@@ -8699,7 +8699,7 @@
       "nm": "Zuheros"
     },
     {
-      "id": "15001",
+      "id": "15000",
       "nm": "Abegondo"
     },
     {
@@ -15455,7 +15455,7 @@
       "nm": "Zotes del Páramo"
     },
     {
-      "id": "25001",
+      "id": "25000",
       "nm": "Abella de la Conca"
     },
     {
@@ -21183,7 +21183,7 @@
       "nm": "Villovieco"
     },
     {
-      "id": "35001",
+      "id": "35000",
       "nm": "Agaete"
     },
     {
@@ -27307,7 +27307,7 @@
       "nm": "Zoma, La"
     },
     {
-      "id": "45001",
+      "id": "45000",
       "nm": "Ajofrín"
     },
     {
@@ -31563,43 +31563,43 @@
       "nm": "Alarba"
     },
     {
-      "id": "50010",
+      "id": "50000",
       "nm": "Alberite de San Juan"
     },
     {
-      "id": "50011",
+      "id": "50001",
       "nm": "Albeta"
     },
     {
-      "id": "50012",
+      "id": "50002",
       "nm": "Alborge"
     },
     {
-      "id": "50013",
+      "id": "50003",
       "nm": "Alcalá de Ebro"
     },
     {
-      "id": "50014",
+      "id": "50004",
       "nm": "Alcalá de Moncayo"
     },
     {
-      "id": "50015",
+      "id": "50005",
       "nm": "Alconchel de Ariza"
     },
     {
-      "id": "50016",
+      "id": "50006",
       "nm": "Aldehuela de Liestos"
     },
     {
-      "id": "50017",
+      "id": "50007",
       "nm": "Alfajarín"
     },
     {
-      "id": "50018",
+      "id": "50008",
       "nm": "Alfamén"
     },
     {
-      "id": "50019",
+      "id": "50009",
       "nm": "Alforque"
     },
     {
@@ -32964,192 +32964,7 @@
       "avisolegal": "si"
     },
     {
-      "id": "9651",
-      "apellidos": "Ma",
-      "nombre": "ca",
-      "email": "jsad@ccs.com",
-      "movil": "748596321",
-      "modalidad": "remoto",
-      "comentario": "e",
-      "avisolegal": "si"
-    },
-    {
-      "id": "bb79",
-      "apellidos": "Ma",
-      "nombre": "ca",
-      "email": "jsad@ccs.com",
-      "movil": "748596321",
-      "departamento": "logistica",
-      "modalidad": "remoto",
-      "comentario": "e",
-      "avisolegal": "si"
-    },
-    {
-      "id": "c319",
-      "apellidos": "Ma",
-      "nombre": "ca",
-      "email": "jsad@ccs.com",
-      "movil": "748596321",
-      "modalidad": "remoto",
-      "comentario": "e",
-      "avisolegal": "si"
-    },
-    {
-      "id": "4763",
-      "apellidos": "Ma",
-      "nombre": "ca",
-      "email": "jsad@ccs.com",
-      "movil": "748596321",
-      "modalidad": "remoto",
-      "comentario": "e",
-      "avisolegal": "si"
-    },
-    {
-      "id": "906a",
-      "apellidos": "Ma",
-      "nombre": "ca",
-      "email": "jsad@ccs.com",
-      "movil": "748596321",
-      "modalidad": "remoto",
-      "comentario": "e",
-      "avisolegal": "si"
-    },
-    {
-      "id": "f5d8",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "modalidad": "hibrido",
-      "avisolegal": "si"
-    },
-    {
-      "id": "fa27",
-      "apellidos": "Barera",
-      "nombre": "Marcos",
-      "email": "dsa@eaw.com",
-      "movil": "748596321",
-      "departamento": "compras",
-      "modalidad": "remoto",
-      "comentario": "",
-      "avisolegal": "si"
-    },
-    {
-      "id": "6caa",
-      "apellidos": "Barera",
-      "nombre": "Marcos",
-      "email": "dsa@eaw.com",
-      "movil": "748596321",
-      "departamento": "compras",
-      "modalidad": "remoto",
-      "comentario": "",
-      "avisolegal": "si"
-    },
-    {
-      "id": "7ed9",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "logistica",
-      "modalidad": "hibrido",
-      "avisolegal": "si"
-    },
-    {
-      "id": "9b9f",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "logistica",
-      "modalidad": "hibrido",
-      "avisolegal": "si"
-    },
-    {
-      "id": "9285",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "compras",
-      "modalidad": "hibrido",
-      "avisolegal": "si"
-    },
-    {
-      "id": "5034",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido",
-      "avisolegal": "si"
-    },
-    {
-      "id": "36b8",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "compras",
-      "modalidad": "hibrido",
-      "avisolegal": "si"
-    },
-    {
-      "id": "535e",
-      "apellidos": "Ma",
-      "nombre": "ca",
-      "email": "jsad@ccs.com",
-      "movil": "748596321",
-      "departamento": "IT",
-      "modalidad": "remoto",
-      "comentario": "e",
-      "avisolegal": "si"
-    },
-    {
-      "id": "663c",
-      "apellidos": "Ma",
-      "nombre": "ca",
-      "email": "jsad@ccs.com",
-      "movil": "748596321",
-      "departamento": "IT",
-      "modalidad": "remoto",
-      "comentario": "e",
-      "avisolegal": "si"
-    },
-    {
-      "id": "a561",
-      "apellidos": "Ma",
-      "nombre": "ca",
-      "email": "jsad@ccs.com",
-      "movil": "748596321",
-      "departamento": "IT",
-      "modalidad": "remoto",
-      "comentario": "e",
-      "avisolegal": "si"
-    },
-    {
-      "id": "78a4",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "juridico",
-      "modalidad": "hibrido",
-      "avisolegal": "si"
-    },
-    {
-      "id": "ee69",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "compras",
-      "modalidad": "hibrido",
-      "avisolegal": "si"
-    },
-    {
-      "id": "d0f4",
+      "id": "f3a8",
       "apellidos": "Aponte",
       "nombre": "David",
       "email": "abuelo12@mail.com",
@@ -33158,587 +32973,116 @@
       "modalidad": "hibrido"
     },
     {
-      "id": "f55e",
-      "apellidos": "Garcia",
-      "nombre": "Adrian",
-      "email": "adrigg@mail.com",
-      "movil": "796853412",
+      "id": "fa3e",
+      "apellidos": "Aponte",
+      "nombre": "David",
+      "email": "abuelo12@mail.com",
+      "movil": "748563291",
+      "departamento": "IT",
+      "modalidad": "hibrido"
+    },
+    {
+      "id": "6966",
+      "apellidos": "Aponte",
+      "nombre": "David",
+      "email": "abuelo12@mail.com",
+      "movil": "748563291",
+      "departamento": "IT",
+      "modalidad": "hibrido"
+    },
+    {
+      "id": "d593",
+      "apellidos": "dasd",
+      "nombre": "asda",
+      "email": "sdasd@dasd.com",
+      "movil": "753629841",
       "departamento": "juridico",
+      "modalidad": "remoto"
+    },
+    {
+      "id": "6bd5",
+      "apellidos": "Aponte",
+      "nombre": "David",
+      "email": "abuelo12@mail.com",
+      "movil": "748563291",
+      "modalidad": "hibrido"
+    },
+    {
+      "id": "7d8e",
+      "apellidos": "Aponte",
+      "nombre": "David",
+      "email": "abuelo12@mail.com",
+      "movil": "748563291",
+      "departamento": "ventas",
+      "modalidad": "hibrido"
+    },
+    {
+      "id": "f3a8",
+      "apellidos": "Aponte",
+      "nombre": "David",
+      "email": "abuelo12@mail.com",
+      "movil": "748563291",
+      "departamento": "compras",
+      "modalidad": "hibrido"
+    },
+    {
+      "id": "d593",
+      "apellidos": "dasd",
+      "nombre": "asda",
+      "email": "sdasd@dasd.com",
+      "movil": "753629841",
+      "departamento": "compras",
+      "modalidad": "remoto"
+    },
+    {
+      "id": "d593",
+      "apellidos": "dasd",
+      "nombre": "asda",
+      "email": "sdasd@dasd.com",
+      "movil": "753629841",
+      "modalidad": "remoto"
+    },
+    {
+      "id": "fdfa",
+      "apellidos": "sdefu",
+      "nombre": "ishdfoiofdio",
+      "email": "sdihfsi@fdpiajfid.como",
+      "movil": "695874321",
+      "departamento": "ventas",
       "modalidad": "hibrido",
       "comentarios": ""
     },
     {
-      "id": "4247",
-      "apellidos": "Garcia",
-      "nombre": "Adrian",
-      "email": "adrigg@mail.com",
-      "movil": "796853412",
-      "departamento": "juridico",
+      "id": "fdfa",
+      "apellidos": "sdefu",
+      "nombre": "ishdfoiofdio",
+      "email": "sdihfsi@fdpiajfid.como",
+      "movil": "695874321",
+      "departamento": "ventas",
       "modalidad": "hibrido",
       "comentarios": ""
     },
     {
-      "id": "4703",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "bcc3",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "2905",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "d8e5",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "573b",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "a2c0",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "2894",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "b047",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "744f",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "38f3",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "d0ab",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "11df",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "ecd8",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "68eb",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "efde",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "7d8b",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "bea8",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "455b",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "a41b",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "1cd6",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "7cd3",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "1333",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "d536",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "ffaa",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "d57d",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "ea8b",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "e53c",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "6790",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "b9df",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "eab9",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "d02c",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "e8ef",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "cfc0",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "996c",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "7825",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "1745",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "27a3",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "b905",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "7de9",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "a3ea",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "778c",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "e4c8",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "7649",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "32f1",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "61fb",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "c0cb",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "8177",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "64ab",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "0b94",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "d9c9",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "529b",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "1f2b",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "8ecc",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "ee47",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "ff2a",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "83b3",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "ventas",
-      "modalidad": "hibrido",
-      "comentarios": "qerewrer"
-    },
-    {
-      "id": "8217",
-      "apellidos": "qweqwe",
-      "nombre": "wqeqwe",
-      "email": "wqeqw@qwe.com",
-      "movil": "699986214",
-      "departamento": "IT",
-      "modalidad": "hibrido",
-      "comentarios": "wqeqweqwe"
-    },
-    {
-      "id": "273a",
-      "apellidos": "qweqwe",
-      "nombre": "qweqw",
-      "email": "qweqwe@qweqwe.com",
-      "movil": "699986200",
+      "id": "d593",
+      "apellidos": "dasd",
+      "nombre": "asda",
+      "email": "sdasd@dasd.com",
+      "movil": "753629841",
       "departamento": "compras",
+      "modalidad": "remoto"
+    },
+    {
+      "id": "9e8a",
+      "apellidos": "b",
+      "nombre": "b",
+      "email": "b@mail.com",
+      "movil": "777777777",
+      "departamento": "IT",
       "modalidad": "remoto",
-      "comentarios": "qweqwe"
+      "comentarios": ""
     },
     {
-      "id": "1aa1",
+      "id": "fa3e",
       "apellidos": "Aponte",
       "nombre": "David",
       "email": "abuelo12@mail.com",
@@ -33747,670 +33091,18 @@
       "modalidad": "hibrido"
     },
     {
-      "id": "9935",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "f6d9",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "1fae",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "fbcc",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "5b39",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "c93a",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "a16b",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "c0de",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "a885",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "0283",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "2cbf",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "bd6f",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "37bb",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "6ee0",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "65fe",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "fcb7",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "78ac",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "94c4",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "0b7b",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "85af",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "26c5",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "81c2",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "e92a",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "3ffa",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "e3c2",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "0d97",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "3b34",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "1412",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "abfc",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "3272",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "5d52",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "20e6",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "ec4b",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "225b",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "f7ac",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "39f5",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "bc90",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "6af0",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "957f",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "1ec2",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "f512",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "f82b",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "1147",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "de05",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "fd29",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "f195",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "88c9",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "024d",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "7bb9",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "099a",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "4d3e",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "675b",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "8955",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "5d85",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "8575",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "929f",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "3cb0",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "c59d",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "2832",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "60dd",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "ff39",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "0af1",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "b5b4",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "ac8b",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "11e4",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "52eb",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "a56c",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "e8ec",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "e5c1",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "2646",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "6ee1",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "f4ee",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "d08d",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
-    },
-    {
-      "id": "d5aa",
-      "apellidos": "Aponte",
-      "nombre": "David",
-      "email": "abuelo12@mail.com",
-      "movil": "748563291",
-      "departamento": "IT",
-      "modalidad": "hibrido"
+      "id": "409a",
+      "apellidos": "dfs",
+      "nombre": "das",
+      "email": "asda@dasd.com",
+      "movil": "698532147",
+      "departamento": {
+        "id": "01",
+        "nm": "ventas"
+      },
+      "modalidad": "hibrido",
+      "comentarios": "",
+      "PDFfile": "698532147.pdf"
     }
   ],
   "departamentos": [

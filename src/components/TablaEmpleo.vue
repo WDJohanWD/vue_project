@@ -94,7 +94,7 @@
                 <td class="align-middle">{{ candidato.apellidos }}</td>
                 <td class="align-middle text-start">{{ candidato.nombre }}</td>
                 <td class="align-middle">{{ candidato.movil }}</td>
-                <td class="align-middle">{{ candidato.departamento }}</td>
+                <td class="align-middle">{{ candidato.departamento.nm }}</td>
                 <td class="align-middle">{{ candidato.modalidad }}</td>
                 <td class="text-center align-middle pale-yellow table-warning">
                   <div>
@@ -136,7 +136,6 @@ export default {
         modalidad: '',
         comentarios: ''
       },
-
       avisolegal: '',
       cvFile: null,
       editMovil: false,
@@ -227,99 +226,83 @@ export default {
     },
 
     async grabarCandidato() {
-      try {
-        // Validaciones
-        if (!this.candidato.apellidos || !this.candidato.nombre || !this.candidato.email || !this.candidato.movil
-          || !this.candidato.departamento || !this.candidato.modalidad) {
-          this.mostrarAlerta("Aviso", "Todos los campos obligatorios", "warning");
-          return; // Detiene la ejecución si falta algún campo
-        }
-
-        // Política de privacidad
-        if (!this.avisolegal) {
-          this.mostrarAlerta("Aviso", "Debe Aceptar las Condiciones de Privacidad", "warning");
-          return;
-        }
-
-        // **Paso 1: Enviar los datos del candidato**
-        const datos = {
-          apellidos: this.candidato.apellidos,
-          nombre: this.candidato.nombre,
-          email: this.candidato.email,
-          movil: this.candidato.movil,
-          departamento: this.candidato.departamento.nm,
-          modalidad: this.candidato.modalidad,
-          comentarios: this.candidato.comentarios,
-        };
-
-        const responseCandidato = await fetch('http://localhost:3000/candidatos', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(datos), // Enviamos los datos como JSON
-        });
-        this.getCandidatos();
-        if (!responseCandidato.ok) {
-          const errorData = await responseCandidato.json();
-          throw new Error(`Error al guardar los datos del candidato: ${errorData.message || 'Desconocido'}`);
-        }
-
-        // Paso 2: Subir el archivo PDF (si existe)
-
-        if (this.cvFile) {
-
-          const formData = new FormData();
-          const candidatoId = this.candidato.movil;
-          console.log('Candidato ID:', this.candidato.movil);
-          if (!candidatoId) {
-            throw new Error('No se pudo obtener el ID del candidato');
+      if (this.candidato.apellidos && this.candidato.nombre && this.candidato.email && this.candidato.movil && this.candidato.departamento && this.candidato.modalidad && this.avisolegal) {
+        try {
+          const response = await fetch('http://localhost:3000/candidatos');
+          if (!response.ok) {
+            throw new Error('Error al obtener los candidatos: ' + response.statusText);
           }
-          const nuevoArchivo = new File([this.cvFile], `${candidatoId}.pdf`, { type: this.cvFile.type });
-          formData.append('archivo', nuevoArchivo);
-          formData.append('candidatoId', candidatoId)
-          console.log(nuevoArchivo)
-          const fileResponse = await fetch('http://localhost:5000/subircv', {
-            method: 'POST',
-            body: formData,
-            credentials: 'include'
-          });
 
-          if (!fileResponse.ok) {
-            throw new Error('Error al subir el archivo');
+          const candidatosExistentes = await response.json();
+
+          let candidatoExistente = candidatosExistentes.find(candidato => candidato.email === this.candidato.email);
+
+          if (this.candidato.comentarios && this.candidato.comentarios.length > 256) {
+            throw new Error("El comentario no puede ser mayor de 256 carácteres");
+          }
+
+          if (candidatoExistente) {
+
+            if (candidatoExistente.departamento === this.candidato.departamento) {
+              throw new Error("Ya tiene una solicitud en este departamento")
+            } else {
+              this.createCandidato();
+              if (this.cvFile !== null) {
+                this.submitFile();
+              }
+            }
           } else {
-            console.log('hubo respuesta:', fileResponse);
+            this.createCandidato();
+            if (this.cvFile !== null) {
+              this.submitFile();
+            }
           }
-          while (!fileResponse.ok) {
-            console.log('Intentando de nuevo'); 
-            
-          }
-
-
-          const fileData = await fileResponse.json();
-          console.log('Archivo subido correctamente:', fileData);
+        } catch (error) {
+          console.error(error);
+          this.mostrarAlerta('Error', error.message, 'error');
         }
-        // Si todo fue bien
-        this.mostrarAlerta("Aviso", "Datos y archivo enviados correctamente", "success");
-        this.getCandidatos(); // Si necesitas actualizar la lista de candidatos
-
-        // Restablecer formulario
-        this.candidato = {
-          apellidos: '',
-          nombre: '',
-          email: '',
-          movil: '',
-          departamento: '',
-          modalidad: '',
-          comentarios: '',
-        };
-        this.$refs.fileInput.value = null;
-        this.avisolegal = false;
-
-      } catch (error) {
-        console.error('Error:', error);
-        //this.mostrarAlerta("Error", error.message, "error");  // Mostrar el error en la alerta
+      } else {
+        this.mostrarAlerta('Error', 'Por favor, completa todos los campos requeridos.', 'error');
       }
+
+    },
+
+    async submitFile() {
+      const formdata = new FormData;
+      const candidatoId = this.candidato.telefono || 'default';
+      const nuevoArchivo = new File([this.cvFile], `${candidatoId}.pdf`, { type: this.cvFile.type })
+      formdata.append("archivo", nuevoArchivo);
+      formdata.append("candidatoId", candidatoId)
+      console.log(nuevoArchivo);
+      const uploadResponse = await fetch('http://localhost:5000/subircv', {
+        method: 'POST',
+        body: formdata,
+      });
+
+      if (!uploadResponse.ok) {
+        throw new Error('Error al subir el cv');
+      } else {
+        console.log('hubo respuesta: ', uploadResponse);
+      }
+    },
+
+    async createCandidato() {
+      const crearResponse = await fetch('http://localhost:3000/candidatos', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(this.candidato)
+      });
+
+      if (!crearResponse.ok) {
+        throw new Error('Error al guardar el candidato: ' + crearResponse.statusText);
+      }
+
+      const nuevoCandidato = await crearResponse.json();
+      this.candidatos.push(nuevoCandidato);
+      this.mostrarAlerta('Aviso', 'Candidato agregado correctamente', 'success');
+      this.getCandidatos();
     },
 
     async getDepartamentos() {
@@ -351,7 +334,7 @@ export default {
           this.candidato = { ...candidatoEncontrado };
           this.editMovil = true
         } else {
-          this.mostrarAlerta('Error', 'candidato no encontrado en el servidor.', 'error');
+          this.mostrarAlerta('Error', 'Candidato no encontrado en el servidor.', 'error');
         }
       } catch (error) {
         console.error(error);
@@ -390,11 +373,11 @@ export default {
               body: JSON.stringify(candidatoExistente),
             });
 
-            this.mostrarAlerta("Aviso", "candidato dado de baja correctamente", "success");
+            this.mostrarAlerta("Aviso", "Candidato dado de baja correctamente", "success");
             this.getCandidatos();
 
           } else {
-            this.mostrarAlerta("Error", "candidato no encontrado", "error");
+            this.mostrarAlerta("Error", "Candidato no encontrado", "error");
           }
         } catch (error) {
           console.error(error);

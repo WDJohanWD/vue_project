@@ -1,10 +1,10 @@
+import cors from 'cors';
 import express from 'express';
 import http from 'http';
-import morgan from 'morgan';
 import mongoose from 'mongoose';
+import morgan from 'morgan';
 import rutas from '../src/router/rutas.mjs';
-import cors from 'cors';
-
+import multer from 'multer';
 
 // se crea el servidor
 const app = express();
@@ -12,36 +12,23 @@ const server = http.createServer(app);
 // Habilitar CORS
 // Configurar CORS para permitir solicitudes del frontend
 
-app.use(cors({
-  origin: ['http://localhost:8080', 'http://localhost:5000'],  // Permitir el frontend
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true // Permitir cookies y autenticación
-}));
-
-// Middleware para manejar OPTIONS
-
-app.options('*', cors()); 
-
-
- // Habilita CORS para preflight
-app.use(express.urlencoded({ extended: true })); // ¡IMPORTANTE!
-app.use(express.json());
+app.use(cors());
 app.use(morgan('dev'));
+app.use(express.json());
 app.use(rutas);
 
-// Servir la carpeta 'uploads' como estática
+const upload = multer ({ dest:'uploads/' });
+app.use(upload.single('archivo'));
 
 
+app.set('port', process.env.PORT  || 5000);
 
-//peticones
+
 app.get('/', (req,res) => {
     res.send("Servidor para MongoDB");
     });
 
-app.use('/uploads', express.static('uploads'));
 
-app.set('port', process.env.PORT  || 5000);
 
 server.listen(app.get('port'),() => {
     console.log("servidor corriendo en puerto ...", app.get('port'))
