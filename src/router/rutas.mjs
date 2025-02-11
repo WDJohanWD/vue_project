@@ -83,7 +83,7 @@ rutas.post('/subircv', uploadCV.single('archivo'), (req, res) => {
 
   rutas.get('/articulos', async (req, res) => {
     try{
-        const articulos = await Articulo.find({});
+        const articulos = await Articulo.default.find({});
         res.json(articulos);
 
     } catch(error){

@@ -33000,6 +33000,58 @@
       },
       "modalidad": "hibrido",
       "comentarios": ""
+    },
+    {
+      "id": "152e",
+      "apellidos": "dasda",
+      "nombre": "sdas",
+      "email": "sdasd@dadfa.cm",
+      "movil": "687453216",
+      "departamento": {
+        "id": "01002",
+        "nm": "compras"
+      },
+      "modalidad": "remoto",
+      "comentarios": ""
+    },
+    {
+      "id": "d312",
+      "apellidos": "asda",
+      "nombre": "sdasdasda",
+      "email": "sdasd@dadfa.cmas",
+      "movil": "687453218",
+      "departamento": {
+        "id": "01002",
+        "nm": "compras"
+      },
+      "modalidad": "presencial",
+      "comentarios": ""
+    },
+    {
+      "id": "9224",
+      "apellidos": "asda",
+      "nombre": "sdasdasda",
+      "email": "sdasd@dadfa.cmas",
+      "movil": "687453888",
+      "departamento": {
+        "id": "01002",
+        "nm": "compras"
+      },
+      "modalidad": "presencial",
+      "comentarios": ""
+    },
+    {
+      "id": "c155",
+      "apellidos": "dasd",
+      "nombre": "asd",
+      "email": "asda@das.com",
+      "movil": "745893212",
+      "departamento": {
+        "id": "01003",
+        "nm": "IT"
+      },
+      "modalidad": "remoto",
+      "comentarios": ""
     }
   ],
   "departamentos": [
