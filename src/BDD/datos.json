@@ -33049,6 +33049,47 @@
       "modalidad": "hibrido",
       "avisoLegal": "si",
       "comentario": ""
+    },
+    {
+      "id": "e33b",
+      "apellidos": "Aponte",
+      "nombre": "David",
+      "email": "abuelo12@mail.com",
+      "movil": "748563291",
+      "departamento": {
+        "id": "01004",
+        "nm": "logistica"
+      },
+      "modalidad": "hibrido",
+      "avisoLegal": "si",
+      "comentario": ""
+    },
+    {
+      "id": "e33b",
+      "apellidos": "Aponte",
+      "nombre": "David",
+      "email": "abuelo12@mail.com",
+      "movil": "748563291",
+      "departamento": {
+        "id": "01004",
+        "nm": "logistica"
+      },
+      "modalidad": "hibrido",
+      "avisoLegal": "si",
+      "comentario": ""
+    },
+    {
+      "id": "7b06",
+      "apellidos": "A",
+      "nombre": "E",
+      "email": "BB@CC.dd",
+      "movil": "769853421",
+      "departamento": {
+        "id": "01",
+        "nm": "ventas"
+      },
+      "modalidad": "presencial",
+      "comentarios": ""
     }
   ],
   "departamentos": [
