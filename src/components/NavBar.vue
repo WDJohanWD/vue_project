@@ -33,7 +33,10 @@
                         <router-link to="/articulos" class="nav-link text-white"
                             exact-active-class="active">Articulos</router-link>
                     </li>
-
+                    <li class="nav-item">
+                        <router-link to="/tienda" class="nav-link text-white"
+                            exact-active-class="active">Tienda</router-link>
+                    </li>
                 </ul>
                 <input class="form-control w-25 ms-auto" type="search" placeholder="Buscar" aria-label="Search">
                 <button class="btn btn-outline-success bg-light" type="submit"> <i class="bi bi-search"></i></button>

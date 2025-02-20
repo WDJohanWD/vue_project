@@ -8,12 +8,12 @@ console.log(Articulo)
 
 const rutas = express.Router();
 
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+//import { fileURLToPath } from 'url';
+//import { dirname } from 'path';
 
 // Obtener el directorio actual
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+//const __filename = fileURLToPath(import.meta.url);
+//const __dirname = dirname(__filename);
 
 
 // Configuración de multer
@@ -86,7 +86,7 @@ rutas.post('/subircv', uploadCV.single('archivo'), (req, res) => {
 
 rutas.get('/articulos', async (req, res) => {
     try{
-        const articulos = await Articulo.find({});
+        const articulos = await Articulo.default.find({});
         res.json(articulos);
 
     } catch(error){
@@ -120,7 +120,7 @@ rutas.put('/articulos/:id', async (req, res) => {
         }
 
         // Intentar encontrar y actualizar el artículo
-        const articulo = await Articulo.findByIdAndUpdate(id, req.body, { new: true });
+        const articulo = await Articulo.default.findByIdAndUpdate(id, req.body, { new: true });
 
         // Si no se encuentra el artículo
         if (!articulo) {
@@ -147,7 +147,7 @@ rutas.delete('/articulos/:id', async (req, res) => {
         }
 
         // Intentar encontrar y eliminar el artículo
-        const articulo = await Articulo.findByIdAndDelete(id);
+        const articulo = await Articulo.default.findByIdAndDelete(id);
 
         // Si no se encuentra el artículo
         if (!articulo) {

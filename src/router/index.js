@@ -11,7 +11,7 @@ import TablaRegistro from '@/components/TablaRegistro.vue'
 import TablaLogin from '@/components/TablaLogin.vue'
 import TablaGestion from '@/components/TablaGestion.vue'
 import PaginaInicio from '@/components/PaginaInicio.vue'
-
+import TablaTienda from '@/components/TablaTienda.vue'
 
 const routes = [
   {
@@ -78,6 +78,11 @@ const routes = [
     name: 'login',
     component: TablaLogin
     
+  },
+  {
+    path: '/tienda',
+    name: 'tienda',
+    component: TablaTienda
   }
 ]
 

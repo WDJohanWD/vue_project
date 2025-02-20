@@ -10,6 +10,7 @@ import "bootstrap/dist/js/bootstrap.min.js"
 import "bootstrap-icons/font/bootstrap-icons.css"
 import "sweetalert2/dist/sweetalert2.min.css"
 import "@fortawesome/fontawesome-free/css/all.css"
+import { createPinia } from 'pinia' 
 
 
-createApp(App).use(router).use(store).mount('#app')
+createApp(App).use(createPinia()).use(router).use(store).mount('#app')
