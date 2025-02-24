@@ -133,8 +133,7 @@ export default {
                 precio_unitario: 0.00,
                 stock_disponible: 0,
                 personalizacion: '',
-                fecha_alta: '',
-                imagen_url:''
+                fecha_alta: ''
             },
 
             image: null,
@@ -192,9 +191,8 @@ export default {
             event.preventDefault();
 
             try {
-                this.articulo.imagen_url = `${this.articulo._id}.${this.image.name.split('.').pop()}`; //Se instancia la url de la imagen
-
                 if (this.articulo._id) {
+                    // Si el artículo ya tiene un ID, actualizar
                     await actualizarArticulo(this.articulo._id, this.articulo);
                     Swal.fire({
                         title: 'Artículo actualizado',
@@ -202,11 +200,16 @@ export default {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    this.submitImage();
+
+                    // Subir imagen si hay una nueva
+                    if (this.image) {
+                        this.submitImage(this.articulo._id);
+                    }
                 } else {
-                    // Subir articulo
+                    // Subir el artículo y esperar el ID
                     const nuevoArticulo = await agregarArticulo(this.articulo);
                     this.articulos.push(nuevoArticulo);
+
                     Swal.fire({
                         title: 'Artículo agregado',
                         icon: 'success',
@@ -214,22 +217,31 @@ export default {
                         timer: 1500
                     });
 
-                    // Subir imagen
-                    this.submitImage();
+                    // ✅ AHORA asignamos la URL de la imagen porque ya tenemos el ID
+                    if (this.image) {
+                        const extension = this.image.name.split('.').pop();
+                        this.articulo.imagen_url = `${nuevoArticulo._id}.${extension}`;
+
+                        // Subir la imagen con el ID correcto
+                        this.submitImage(nuevoArticulo._id);
+                    }
                 }
-                this.obtenerArt(); // Refresh the list of articles
-                this.limpiarArticulo(); // Clear the form
+
+                // Recargar artículos y limpiar formulario
+                this.obtenerArt();
+                this.limpiarArticulo();
             } catch (error) {
                 console.error('Error al agregar el artículo', error);
             }
         },
 
-        async submitImage() {
-            const formdata = new FormData();
+        async submitImage(articuloId) {
+            if (!this.image) return; // Evitar errores si no hay imagen
 
-            // Usa directamente this.image si ya es un archivo
-            formdata.append("image", this.image, `${this.articulo._id}.${this.image.name.split('.').pop()}`);
-            formdata.append("articuloId", this.articulo._id);
+            const formdata = new FormData();
+            const extension = this.image.name.split('.').pop();
+            formdata.append("image", this.image, `${articuloId}.${extension}`);
+            formdata.append("articuloId", articuloId);
 
             try {
                 const uploadResponse = await fetch('http://localhost:5000/subirimg', {
@@ -241,10 +253,10 @@ export default {
                     throw new Error('Error al subir la imagen');
                 }
 
-                console.log('Hubo respuesta: ', await uploadResponse.json());
+                console.log('Imagen subida correctamente:', await uploadResponse.json());
 
             } catch (error) {
-                console.error('Error:', error);
+                console.error('Error al subir la imagen:', error);
             }
         },
 
@@ -302,7 +314,7 @@ export default {
                 imagen_url: '',
                 fecha_alta: ''
             };
-            
+
             this.image = null
         }
     }
