@@ -16,8 +16,8 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(rutas);
 
-const upload = multer({ dest: 'uploads/' });
-app.use(upload.single('archivo'));
+//const upload = multer({ dest: 'uploads/' });
+//app.use(upload.single('archivo'));
 
 // Escuchar el puerto 5000
 app.set('port', process.env.PORT || 5000);

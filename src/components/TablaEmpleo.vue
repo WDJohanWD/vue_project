@@ -164,8 +164,8 @@ export default {
       }
 
       this.avisolegal = '',
-      this.cvFile = null,
-      this.$refs.fileInput.value = null;
+        this.cvFile = null,
+        this.$refs.fileInput.value = null;
       this.editMovil = false
     },
 
@@ -268,23 +268,34 @@ export default {
     },
 
     async submitFile() {
-      const formdata = new FormData;
-      const candidatoId = this.candidato.telefono || 'default';
-      const nuevoArchivo = new File([this.cvFile], `${candidatoId}.pdf`, { type: this.cvFile.type })
-      formdata.append("archivo", nuevoArchivo);
-      formdata.append("candidatoId", candidatoId)
-      console.log(nuevoArchivo);
-      const uploadResponse = await fetch('http://localhost:5000/subircv', {
-        method: 'POST',
-        body: formdata,
-      });
+      if (!this.cvFile) {
+        console.error("No hay archivo para subir");
+        return;
+      }
 
-      if (!uploadResponse.ok) {
-        throw new Error('Error al subir el cv');
-      } else {
-        console.log('hubo respuesta: ', uploadResponse);
+      const formdata = new FormData();
+      const candidatoId = this.candidato.movil || 'default';
+      const nuevoArchivo = new File([this.cvFile], `${candidatoId}.pdf`, { type: 'application/pdf' });
+
+      formdata.append("archivo", nuevoArchivo);
+      formdata.append("candidatoId", candidatoId);
+
+      try {
+        const uploadResponse = await fetch('http://localhost:5000/subircv', {
+          method: 'POST',
+          body: formdata,
+        });
+
+        if (!uploadResponse.ok) {
+          throw new Error(`Error al subir el CV: ${uploadResponse.statusText}`);
+        }
+
+        console.log('CV subido con éxito:', await uploadResponse.json());
+      } catch (error) {
+        console.error("Error en submitFile:", error);
       }
     },
+
 
     async createCandidato() {
       const crearResponse = await fetch('http://localhost:3000/candidatos', {
