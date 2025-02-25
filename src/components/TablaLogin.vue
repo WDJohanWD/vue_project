@@ -28,6 +28,12 @@
                     <button type="submit" class="btn btn-primary">Iniciar sesión</button>
                 </div>
             </form>
+            <h2>Usuario normal:</h2>
+            <h4>DNI: y9654813w</h4>
+            <h4>Contraseña: renaido</h4>
+            <h2>Usuario normal:</h2>
+            <h4>DNI: 53974821P</h4>
+            <h4>Contraseña: estebomba</h4>
         </div>
 
         <!-- Mensaje de error -->
