@@ -38,25 +38,21 @@
                             exact-active-class="active">Tienda</router-link>
                     </li>
                 </ul>
-                <input class="form-control w-25 ms-auto" type="search" placeholder="Buscar" aria-label="Search">
-                <button class="btn btn-outline-success bg-light" type="submit"> <i class="bi bi-search"></i></button>
-
-                <span v-if="isLogged" class="navbar-text text-white ms-3">{{ nombreUsuario }}</span>
-                <div class="dropdown">
-                    <button class="dropdown-toggle  ms-4 me-2" type="button" id="dropdownMenuButton"
+                <div class="dropdown ms-auto d-flex align-items-center">
+                    <router-link to="/cart"> <i class="bi bi-bag fs-2 me-3 text-white"></i></router-link>
+                    <span v-if="isLogged" class="text-white me-2">{{ nombreUsuario }}</span>
+                    <button class="dropdown-toggle me-2" type="button" id="dropdownMenuButton"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-person-bounding-box fs-2"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end fs-5" aria-labelledby="dropdownMenuButton">
-                        <li v-if="!isLogged" ><router-link class="nav-link text-primary text-end me-3" to="/login"
+                        <li v-if="!isLogged"><router-link class="nav-link text-primary text-end me-3" to="/login"
                                 href="#">Acceder</router-link></li>
                         <li><router-link class="nav-link text-primary text-end me-3" to="/registro"
                                 href="#">Registro</router-link></li>
                         <li>
                             <a class="nav-link text-primary text-end me-3" v-if="isLogged" @click.prevent="logout">Cerrar sesión</a>
                         </li>
-
-
                     </ul>
                 </div>
 

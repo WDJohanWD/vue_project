@@ -3,17 +3,14 @@ import Articulo from '../modelos/modelos.js';
 import mongoose  from 'mongoose';
 import path from 'path';
 import multer from 'multer';
+import Stripe from 'stripe';
 
 console.log(Articulo)
 
 const rutas = express.Router();
 
-//import { fileURLToPath } from 'url';
-//import { dirname } from 'path';
 
-// Obtener el directorio actual
-//const __filename = fileURLToPath(import.meta.url);
-//const __dirname = dirname(__filename);
+const stripe = new Stripe("sk_test_51QtU6ULNe2tfZXg15E3zLR6JblBhoYgHHeugvFbIJbGjDDp2SEsWhwn2XiVUJkIAWXy9JQGbhItjzF03iqlfJfst00Gd9hCttS")
 
 
 // Configuración de multer
@@ -162,5 +159,50 @@ rutas.delete('/articulos/:id', async (req, res) => {
         console.log("Error al eliminar artículo:", error);
     }   
 });
+
+// Ruta para crear la sesión de checkout
+rutas.post('/crear-checkout-session', async (req, res) => {
+    try {
+        const { items, amount } = req.body;  // Recibimos los items y el monto total
+
+        // Verificar que los datos recibidos son válidos
+        if (!items || !Array.isArray(items) || items.length === 0) {
+            return res.status(400).json({ error: "Debe haber al menos un producto en el carrito." });
+        }
+
+        if (!amount || isNaN(amount) || amount <= 0) {
+            return res.status(400).json({ error: "Monto inválido" });
+        }
+
+        // Crear los items de la línea para la sesión de pago
+        const lineItems = items.map(item => ({
+            price_data: {
+                currency: 'eur',  // La moneda en que se va a pagar
+                product_data: {
+                    name: item.nombre,  // Nombre del producto
+                },
+                unit_amount: item.precio_unitario * 100,  // Convertimos el precio a céntimos
+            },
+            quantity: item.cantidad,  // Cantidad del producto en el carrito
+        }));
+
+        // Crear la sesión de pago en Stripe
+        const session = await stripe.checkout.sessions.create({
+            payment_method_types: ['card'],
+            line_items: lineItems,  // Pasamos los items del carrito
+            mode: 'payment',
+            success_url: "http://localhost:8080/success",  // URL de éxito
+            cancel_url: "http://localhost:8080/cancel",  // URL de cancelación
+        });
+
+        // Respondemos con el ID de la sesión de Stripe
+        res.json({ id: session.id });
+
+    } catch (error) {
+        console.error("Error al crear la sesión de pago:", error);
+        res.status(500).json({ error: "Error en el servidor" });
+    }
+});
+
 
 export default rutas;
