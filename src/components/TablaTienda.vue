@@ -35,7 +35,7 @@
                         <th scope="col" class="col-md-4">Descripción</th>
                         <th scope="col" class="col-md-2">Precio</th>
                         <th scope="col" class="col-md-4" v-if="isAdmin">Stock</th>
-                        <th scope="col" class="pale-yellow table-warning col-md-4">Añadir al carro</th>
+                        <th scope="col" class="pale-yellow table-warning col-md-4" v-if="isLogged">Añadir al carro</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,7 +49,7 @@
                         <td class="align-middle">{{ articulo.descripcion }}</td>
                         <td class="align-middle">{{ articulo.precio_unitario }} €</td>
                         <td class="align-middle" v-if="isAdmin">{{ articulo.stock_disponible }}</td>
-                        <td class="text-center align-middle pale-yellow table-warning" >
+                        <td class="text-center align-middle pale-yellow table-warning" v-if="isLogged" >
                             <button class="btn btn-success m-2" @click="carritoStore.agregarAlCarrito(articulo)">
                                 <i class="bi bi-cart2" ></i>
                             </button>
@@ -79,6 +79,7 @@ export default {
             articulos: [],
             articulosFiltrados: [],
             isAdmin: false,
+            isLogged: false,
             categorias: ["Electrónica", "Hogar", "Ofimática", "Deporte", "Libros", "Otros"],
             categoriaSeleccionada: "Todos"
         };
@@ -86,6 +87,7 @@ export default {
     mounted() {
         this.obtenerArt();
         this.isAdmin = localStorage.getItem('isAdmin') === 'true';
+        this.isLogged = localStorage.getItem('isLogueado') === 'true';
     },
     methods: {
         async obtenerArt() {
