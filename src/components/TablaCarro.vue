@@ -74,7 +74,7 @@ export default {
   },
   methods: {
         async finalizarPago() {
-            const PUBLIC_KEY = ("pk_test_51QtU6ULNe2tfZXg1Vw39ucpbdWcAYpjfpDOarPwftjWuEvX2iUexOJHFoOSKoxBGJy0pSFqO2DGuYKhKiRrPRL7p000Dy81qLQ");
+            const PUBLIC_KEY = (process.env.VUE_APP_PUBLIC_KEY);
             const stripe = await loadStripe(PUBLIC_KEY);
             console.log("enviando al backend:", JSON.stringify({ items: this.carritoStore.carrito }));
 

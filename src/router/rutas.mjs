@@ -4,13 +4,14 @@ import mongoose  from 'mongoose';
 import path from 'path';
 import multer from 'multer';
 import Stripe from 'stripe';
+import 'dotenv/config';
 
 console.log(Articulo)
 
 const rutas = express.Router();
 
 
-const stripe = new Stripe("sk_test_51QtU6ULNe2tfZXg15E3zLR6JblBhoYgHHeugvFbIJbGjDDp2SEsWhwn2XiVUJkIAWXy9JQGbhItjzF03iqlfJfst00Gd9hCttS")
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
 
 // Configuración de multer
