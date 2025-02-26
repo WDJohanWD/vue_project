@@ -13,6 +13,8 @@ import TablaGestion from '@/components/TablaGestion.vue'
 import PaginaInicio from '@/components/PaginaInicio.vue'
 import TablaTienda from '@/components/TablaTienda.vue'
 import TablaCarro from '@/components/TablaCarro.vue'
+import PaginaSuccess from '@/components/PaginaSuccess.vue'
+import PaginaCancel from '@/components/PaginaCancel.vue'
 
 const routes = [
   {
@@ -89,6 +91,16 @@ const routes = [
     path: '/cart',
     name: 'carro',
     component: TablaCarro
+  },
+  {
+    path: '/success',
+    name: 'success',
+    component: PaginaSuccess
+  },
+  {
+    path: '/cancel',
+    name: 'cancel',
+    component: PaginaCancel
   }
 ]
 
