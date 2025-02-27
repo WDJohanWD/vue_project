@@ -51,7 +51,11 @@
                     <span class="input-group-text custom-span ms-5 me-2">Fecha de Alta: </span>
                     <input type="date" class="form-control sm w-25" placeholder="mm/dd/yyyy"
                         v-model="articulo.fecha_alta" required>
+                    <button class="btn btn-light m-1" @click="limpiarArticulo()">
+                        <i class="bi-arrow-clockwise"></i>
+                    </button>
                 </div>
+
             </div>
             <button class="btn btn-primary m-1" @click="agregarArticulo">Grabar</button>
             <button class="btn btn-primary m-1" @click="limpiarArticulo">Limpiar</button>

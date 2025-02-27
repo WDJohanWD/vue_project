@@ -61,6 +61,9 @@
           <span class="input-group-text custom-span ms-2 me-2">CV (PDF): </span>
           <input type="file" placeholder="Selecciona un archivo" class="custom-file-input form-control" id="archivo"
             name="archivo" accept=".pdf" @change="handleFileUpload" ref="fileInput">
+            <button class="btn btn-light m-1" @click="limpiarFormCand()">
+            <i class="bi-arrow-clockwise"></i>
+          </button>
         </div>
         <div class="d-flex justify-content-start">
           <input type="checkbox" name="avisoleagal" id="avisolegal" v-model="avisolegal" required><label
