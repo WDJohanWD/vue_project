@@ -31,7 +31,7 @@
             <h2>Usuario normal:</h2>
             <h4>DNI: y9654813w</h4>
             <h4>Contraseña: renaido</h4>
-            <h2>Usuario normal:</h2>
+            <h2>Usuario Adminitrador:</h2>
             <h4>DNI: 53974821P</h4>
             <h4>Contraseña: estebomba</h4>
         </div>

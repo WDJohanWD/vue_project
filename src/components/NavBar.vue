@@ -25,10 +25,7 @@
                         <router-link to="/comentarios" class="nav-link text-white"
                             exact-active-class="active">Comentarios</router-link>
                     </li>
-                    <li class="nav-item">
-                        <router-link to="/contacto" class="nav-link text-white"
-                            exact-active-class="active">Contacto</router-link>
-                    </li>
+                    
                     <li class="nav-item">
                         <router-link to="/articulos" class="nav-link text-white"
                             exact-active-class="active">Articulos</router-link>
@@ -36,6 +33,10 @@
                     <li class="nav-item">
                         <router-link to="/tienda" class="nav-link text-white"
                             exact-active-class="active">Tienda</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link to="/contacto" class="nav-link text-white"
+                            exact-active-class="active">Contacto</router-link>
                     </li>
                 </ul>
                 <div class="dropdown ms-auto d-flex align-items-center">

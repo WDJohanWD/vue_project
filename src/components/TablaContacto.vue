@@ -1,25 +1,37 @@
 <template>
-    <div>
-        <form @submit.prevent="enviarCorreo">
-            <div class="form-group">
-                <label for="nombre">Nombre</label>
-                <input type="text" v-model="contacto.nombre" class="form-control" id="nombre" required>
+    <div class="container mt-5">
+        <div class="card shadow-lg">
+            <div class="card-body">
+                <h2 class="text-center mb-4">Contáctanos</h2>
+                <form @submit.prevent="enviarCorreo">
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" v-model="contacto.nombre" class="form-control form-control-lg" id="nombre"
+                            required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="telefono" class="form-label">Teléfono</label>
+                        <input type="tel" v-model="contacto.telefono" class="form-control form-control-lg" id="telefono"
+                            required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" v-model="contacto.email" class="form-control form-control-lg" id="email"
+                            required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="mensaje" class="form-label">Mensaje</label>
+                        <textarea v-model="contacto.mensaje" class="form-control form-control-lg" id="mensaje" rows="4"
+                            required></textarea>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">Enviar Mensaje</button>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="telefono">Teléfono</label>
-                <input type="tel" v-model="contacto.telefono" class="form-control" id="telefono" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" v-model="contacto.email" class="form-control" id="email" required>
-            </div>
-            <div class="form-group">
-                <label for="mensaje">Mensaje</label>
-                <textarea v-model="contacto.mensaje" class="form-control" id="mensaje" rows="3" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
-        </form>
+        </div>
     </div>
+
 
 </template>
 
@@ -79,8 +91,8 @@ export default {
 
 </script>
 
-<style scoped>asda
-.form-control:focus {
+<style scoped>
+asda .form-control:focus {
     border-color: #80bdff;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }

@@ -69,19 +69,19 @@
                 <table class="table table-striped">
                     <thead class="table-info rounded-header">
                         <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col"  v-if="isAdmin"     >ID</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Categoria</th>
                             <th scope="col">Descripción</th>
                             <th scope="col">Precio</th>
                             <th scope="col">Stock</th>
                             <th scope="col">Fecha Alta</th>
-                            <th scope="col" class="pale-yellow table-warning">Gestión</th>
+                            <th scope="col" class="pale-yellow table-warning"  v-if="isAdmin">Gestión</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="articulo in articulosPorPagina" :key="articulo.id">
-                            <td class="align-middle">{{ acortarId(articulo._id) }}</td>
+                            <td class="align-middle"  v-if="isAdmin">{{ acortarId(articulo._id) }}</td>
                             <td class="align-middle">{{ articulo.nombre }}</td>
                             <td class="align-middle">{{ articulo.categoria }}</td>
                             <td class="align-middle">{{ articulo.descripcion }}</td>
@@ -89,7 +89,7 @@
                             <td class="align-middle">{{ articulo.stock_disponible }}</td>
                             <td class="align-middle">{{ acortarFecha(articulo.fecha_alta) }}</td>
 
-                            <td class="text-center align-middle pale-yellow table-warning">
+                            <td class="text-center align-middle pale-yellow table-warning" v-if="isAdmin">
                                 <div>
                                     <button class="btn btn-warning m-2" @click="seleccionarArticulo(articulo._id)">
                                         <i class="fas fa-pencil-alt"></i>
@@ -151,7 +151,9 @@ export default {
                 "Otros"
             ],
             currentPage: 1,
-            pageSize: 5
+            pageSize: 5,
+            isAdmin: false,
+            isLogged: false
         };
     },
 
@@ -163,7 +165,10 @@ export default {
     },
 
     mounted() {
+
         this.obtenerArt();
+        this.isAdmin = localStorage.getItem('isAdmin') === 'true';
+        this.isLogged = localStorage.getItem('isLogueado') === 'true';
     },
 
     methods: {

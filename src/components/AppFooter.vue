@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-primary text-white text-center py-1">
+  <footer class="bg-primary text-white text-center py-1 mt-2">
     <div class="container">
       <p>© 2024 Mi Empresa. Todos los derechos reservados.
         <router-link to="/avisolegal" class="nav-link d-inline text-white">Aviso Legal</router-link> |
