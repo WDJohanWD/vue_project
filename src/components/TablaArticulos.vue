@@ -200,7 +200,7 @@ export default {
             event.preventDefault();
 
             try {
-                this.articulo.imagen_url = `${this.articulo._id}.${this.image.name.split('.').pop()}`; //Se instancia la url de la imagen
+                this.articulo.imagen_url = `${this.articulo._id}.${this.image.name.split('.').pop()}`; 
                 if (this.articulo._id) {
                     // Si el artículo ya tiene un ID, actualizar
                     await actualizarArticulo(this.articulo._id, this.articulo);
@@ -212,7 +212,7 @@ export default {
                     });
 
 
-                    this.submitImage();
+                    this.submitImage(this.articulo._id);
 
                 } else {
                     // Subir el artículo y esperar el ID
@@ -226,7 +226,7 @@ export default {
                         timer: 1500
                     });
 
-                    this.submitImage();
+                    this.submitImage(nuevoArticulo._id);
 
 
                 }
@@ -239,12 +239,12 @@ export default {
             }
         },
 
-        async submitImage() {
+        async submitImage(id) {
             const formdata = new FormData();
 
             // Usa directamente this.image si ya es un archivo
-            formdata.append("image", this.image, `${this.articulo._id}.${this.image.name.split('.').pop()}`);
-            formdata.append("articuloId", this.articulo._id);
+            formdata.append("image", this.image, `${id}.${this.image.name.split('.').pop()}`);
+            formdata.append("articuloId",id);
 
             try {
                 const uploadResponse = await fetch('http://localhost:5000/subirimg', {
