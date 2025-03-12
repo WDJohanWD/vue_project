@@ -293,6 +293,7 @@ export default {
         }
 
         console.log('CV subido con éxito:', await uploadResponse.json());
+        
       } catch (error) {
         console.error("Error en submitFile:", error);
       }
@@ -344,7 +345,13 @@ export default {
 
         if (candidatoEncontrado) {
           this.avisolegal = true
-          this.candidato = { ...candidatoEncontrado };
+          this.candidato.apellidos = candidatoEncontrado.apellidos;
+          this.candidato.nombre = candidatoEncontrado.nombre;
+          this.candidato.email = candidatoEncontrado.email;
+          this.candidato.movil = candidatoEncontrado.movil;
+          this.candidato.departamento = candidatoEncontrado.departamento;
+          this.candidato.modalidad = candidatoEncontrado.modalidad;
+          this.candidato.comentarios = candidatoEncontrado.comentarios;
           this.editMovil = true
         } else {
           this.mostrarAlerta('Error', 'Candidato no encontrado en el servidor.', 'error');
