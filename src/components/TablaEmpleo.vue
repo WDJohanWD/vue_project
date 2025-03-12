@@ -277,11 +277,10 @@ export default {
       }
 
       const formdata = new FormData();
-      const candidatoId = this.candidato.movil || 'default';
-      const nuevoArchivo = new File([this.cvFile], `${candidatoId}.pdf`, { type: 'application/pdf' });
+      const nuevoArchivo = new File([this.cvFile], `${this.candidato.movil}.pdf`, { type: 'application/pdf' });
 
       formdata.append("archivo", nuevoArchivo);
-      formdata.append("candidatoId", candidatoId);
+      formdata.append("candidatoId", this.candidato.movil);
 
       try {
         const uploadResponse = await fetch('http://localhost:5000/subircv', {
