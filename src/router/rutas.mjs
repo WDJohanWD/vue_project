@@ -99,7 +99,7 @@ rutas.get('/articulos', async (req, res) => {
 
 rutas.post('/articulos', async (req, res) => {
     try {
-        const articulo = new Articulo(req.body);
+        const articulo = new Articulo.default(req.body);
         await articulo.save();
         res.status(201).json(articulo);
         console.log("Artículo guardado correctamente");

@@ -69,19 +69,19 @@
                 <table class="table table-striped">
                     <thead class="table-info rounded-header">
                         <tr>
-                            <th scope="col"  v-if="isAdmin"     >ID</th>
+                            <th scope="col" v-if="isAdmin">ID</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Categoria</th>
                             <th scope="col">Descripción</th>
                             <th scope="col">Precio</th>
                             <th scope="col">Stock</th>
                             <th scope="col">Fecha Alta</th>
-                            <th scope="col" class="pale-yellow table-warning"  v-if="isAdmin">Gestión</th>
+                            <th scope="col" class="pale-yellow table-warning" v-if="isAdmin">Gestión</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="articulo in articulosPorPagina" :key="articulo.id">
-                            <td class="align-middle"  v-if="isAdmin">{{ acortarId(articulo._id) }}</td>
+                            <td class="align-middle" v-if="isAdmin">{{ acortarId(articulo._id) }}</td>
                             <td class="align-middle">{{ articulo.nombre }}</td>
                             <td class="align-middle">{{ articulo.categoria }}</td>
                             <td class="align-middle">{{ articulo.descripcion }}</td>
@@ -137,9 +137,9 @@ export default {
                 precio_unitario: 0.00,
                 stock_disponible: 0,
                 personalizacion: '',
-                fecha_alta: ''
+                fecha_alta: '',
+                imagen_url: ''
             },
-
             image: null,
             articulos: [],
             categorias: [
@@ -200,6 +200,7 @@ export default {
             event.preventDefault();
 
             try {
+                this.articulo.imagen_url = `${this.articulo._id}.${this.image.name.split('.').pop()}`; //Se instancia la url de la imagen
                 if (this.articulo._id) {
                     // Si el artículo ya tiene un ID, actualizar
                     await actualizarArticulo(this.articulo._id, this.articulo);
@@ -210,10 +211,9 @@ export default {
                         timer: 1500
                     });
 
-                    // Subir imagen si hay una nueva
-                    if (this.image) {
-                        this.submitImage(this.articulo._id);
-                    }
+
+                    this.submitImage();
+
                 } else {
                     // Subir el artículo y esperar el ID
                     const nuevoArticulo = await agregarArticulo(this.articulo);
@@ -226,14 +226,9 @@ export default {
                         timer: 1500
                     });
 
-                    // ✅ AHORA asignamos la URL de la imagen porque ya tenemos el ID
-                    if (this.image) {
-                        const extension = this.image.name.split('.').pop();
-                        this.articulo.imagen_url = `${nuevoArticulo._id}.${extension}`;
+                    this.submitImage();
 
-                        // Subir la imagen con el ID correcto
-                        this.submitImage(nuevoArticulo._id);
-                    }
+
                 }
 
                 // Recargar artículos y limpiar formulario
@@ -244,13 +239,12 @@ export default {
             }
         },
 
-        async submitImage(articuloId) {
-            if (!this.image) return; // Evitar errores si no hay imagen
-
+        async submitImage() {
             const formdata = new FormData();
-            const extension = this.image.name.split('.').pop();
-            formdata.append("image", this.image, `${articuloId}.${extension}`);
-            formdata.append("articuloId", articuloId);
+
+            // Usa directamente this.image si ya es un archivo
+            formdata.append("image", this.image, `${this.articulo._id}.${this.image.name.split('.').pop()}`);
+            formdata.append("articuloId", this.articulo._id);
 
             try {
                 const uploadResponse = await fetch('http://localhost:5000/subirimg', {
@@ -262,10 +256,10 @@ export default {
                     throw new Error('Error al subir la imagen');
                 }
 
-                console.log('Imagen subida correctamente:', await uploadResponse.json());
+                console.log('Hubo respuesta: ', await uploadResponse.json());
 
             } catch (error) {
-                console.error('Error al subir la imagen:', error);
+                console.error('Error:', error);
             }
         },
 
