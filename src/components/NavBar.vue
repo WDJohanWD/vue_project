@@ -17,7 +17,7 @@
                         <router-link to="/usuarios" class="nav-link text-white"
                             exact-active-class="active">Usuarios</router-link>
                     </li>
-                    <li  class="nav-item">
+                    <li class="nav-item">
                         <router-link to="/empleo" class="nav-link text-white"
                             exact-active-class="active">Empleo</router-link>
                     </li>
@@ -25,10 +25,10 @@
                         <router-link to="/comentarios" class="nav-link text-white"
                             exact-active-class="active">Comentarios</router-link>
                     </li>
-                    
+
                     <li class="nav-item">
                         <router-link to="/articulos" class="nav-link text-white"
-                            exact-active-class="active">Articulos</router-link>
+                            exact-active-class="active">Artículos</router-link>
                     </li>
                     <li class="nav-item">
                         <router-link to="/tienda" class="nav-link text-white"
@@ -40,17 +40,21 @@
                     </li>
                 </ul>
                 <div class="dropdown ms-auto d-flex align-items-center">
-                    <router-link to="/cart"> <i class="bi bi-bag fs-2 me-3 text-white"></i></router-link>
+                    <router-link to="/cart" class="position-relative">
+                        <i class="bi bi-bag fs-2 me-3 text-white"></i>
+                        <!-- Indicador del carrito -->
+                        <span v-if="totalArticulos > 0" class="position-absolute top-0 start-50 translate-top badge rounded-pill bg-danger">
+                            {{ totalArticulos > 9 ? "+9" : totalArticulos }}
+                        </span>
+                    </router-link>
                     <span v-if="isLogged" class="text-white me-2">{{ nombreUsuario }}</span>
                     <button class="dropdown-toggle me-2" type="button" id="dropdownMenuButton"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-person-bounding-box fs-2"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end fs-5" aria-labelledby="dropdownMenuButton">
-                        <li v-if="!isLogged"><router-link class="nav-link text-primary text-end me-3" to="/login"
-                                href="#">Acceder</router-link></li>
-                        <li><router-link class="nav-link text-primary text-end me-3" to="/registro"
-                                href="#">Registro</router-link></li>
+                        <li v-if="!isLogged"><router-link class="nav-link text-primary text-end me-3" to="/login">Acceder</router-link></li>
+                        <li><router-link class="nav-link text-primary text-end me-3" to="/registro">Registro</router-link></li>
                         <li>
                             <a class="nav-link text-primary text-end me-3" v-if="isLogged" @click.prevent="logout">Cerrar sesión</a>
                         </li>
@@ -64,8 +68,14 @@
 </template>
 
 <script>
+import { useCarritoStore } from '../store/carrito'; // Asegúrate de que la ruta es correcta
+import { mapState } from 'pinia';
+
 export default {
     name: "NavBar",
+    computed: {
+        ...mapState(useCarritoStore, ['totalArticulos']) // Acceder al total de artículos en el carrito
+    },
     data() {
         return {
             isDropdownVisible: false,
@@ -78,7 +88,6 @@ export default {
     },
 
     async mounted() {
-        // Comprobar si el usuario está logueado al montar el componente
         await this.getUsuarios();
         this.isAdmin = localStorage.getItem('isAdmin') === 'true';
         this.isLogged = localStorage.getItem('isLogueado') === 'true';
@@ -93,7 +102,6 @@ export default {
                     throw new Error('Error en la solicitud: ' + response.statusText);
                 }
 
-                // Obtener y ordenar usuarios por apellidos y luego por nombre
                 this.usuarios = await response.json();
 
             } catch (error) {
@@ -111,21 +119,15 @@ export default {
             }
         },
 
-        toggleDropdown() {
-            this.isDropdownVisible = !this.isDropdownVisible;
-        },
         logout() {
-            // Eliminar los datos de sesión del localStorage
             localStorage.removeItem('isLogueado');
             localStorage.removeItem('isAdmin');
             localStorage.removeItem('dni');
             window.location.reload();
             this.$router.push({ name: 'login' }).catch(err => {
-                console.error(err); // Captura y logea errores para debugging
+                console.error(err);
             });
         },
-
-
     },
 };
 </script>
@@ -143,7 +145,6 @@ export default {
     background-color: transparent;
     border: none;
     color: var(--bs-white);
-    /* Color primario de Bootstrap */
 }
 
 /* Quitar el fondo del botón al hacer clic o enfocarlo */
@@ -151,4 +152,5 @@ export default {
 .dropdown-toggle:active {
     box-shadow: none;
 }
+
 </style>

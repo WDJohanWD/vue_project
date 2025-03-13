@@ -26,14 +26,15 @@
               />
             </td>
             <td>{{ item.nombre }}</td>
-            <td>{{ item.cantidad }}</td>
+            <td>
+              <button class="btn btn-sm btn-secondary" @click="carritoStore.disminuirCantidad(item._id)">-</button>
+              <span class="mx-2">{{ item.cantidad }}</span>
+              <button class="btn btn-sm btn-primary" @click="carritoStore.aumentarCantidad(item._id)">+</button>
+            </td>
             <td>{{ item.precio }}€</td>
             <td>{{ (item.cantidad * item.precio).toFixed(2) }}€</td>
             <td>
-              <button
-                class="btn btn-danger btn-sm"
-                @click="carritoStore.eliminarDelCarrito(item._id)"
-              >
+              <button class="btn btn-danger btn-sm" @click="carritoStore.eliminarDelCarrito(item._id)">
                 Eliminar
               </button>
             </td>
@@ -42,17 +43,10 @@
       </table>
       <p class="h5">Total: {{ carritoStore.totalPrecio }}€</p>
       <div>
-        <button
-          class="btn btn-warning me-1"
-          @click="carritoStore.vaciarCarrito"
-        >
+        <button class="btn btn-warning me-1" @click="carritoStore.vaciarCarrito">
           Vaciar Carrito
         </button>
-        <button
-          class="btn btn-success ms-1"
-          @click="finalizarPago"
-          :disabled="carritoStore.length === 0"
-        >
+        <button class="btn btn-success ms-1" @click="finalizarPago" :disabled="carritoStore.carrito.length === 0">
           Finalizar Compra
         </button>
       </div>
@@ -62,49 +56,40 @@
 
 <script>
 import { useCarritoStore } from "@/store/carrito.mjs";
-import { loadStripe } from '@stripe/stripe-js';
+import { loadStripe } from "@stripe/stripe-js";
 
 export default {
   name: "TablaCarrito",
 
   setup() {
     const carritoStore = useCarritoStore();
-
     return { carritoStore };
   },
+
   methods: {
-        async finalizarPago() {
-            const PUBLIC_KEY = (process.env.VUE_APP_PUBLIC_KEY);
-            const stripe = await loadStripe(PUBLIC_KEY);
-            console.log("enviando al backend:", JSON.stringify({ items: this.carritoStore.carrito }));
+    async finalizarPago() {
+      const PUBLIC_KEY = process.env.VUE_APP_PUBLIC_KEY;
+      const stripe = await loadStripe(PUBLIC_KEY);
+      
+      const response = await fetch("http://localhost:5000/crear-checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items: this.carritoStore.carrito, amount: this.carritoStore.totalPrecio }),
+      });
 
-            const response = await fetch("http://localhost:5000/crear-checkout-session", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ items: this.carritoStore.carrito, amount: this.carritoStore.totalPrecio }),
-            });
+      const session = await response.json();
+      if (!session.id) {
+        console.error("❌ No se recibió sessionId de Stripe.");
+        return;
+      }
 
-            const session = await response.json();
-            console.log("Session response:", session);
-            if (!session.id) {
-                console.error("❌ No se recibió sessionId de Stripe.");
-                return;
-            }
+      const { error } = await stripe.redirectToCheckout({ sessionId: session.id });
 
-            // Redirigir a Stripe Checkout
-            const { error } = await stripe.redirectToCheckout({
-                sessionId: session.id,
-            });
-
-            if (error) {
-                console.error("Error en el pago:", error);
-            }
-
-            //const cartStore = useCartStore();
-            //cartStore.limpiarCart();
-        }
-
+      if (error) {
+        console.error("Error en el pago:", error);
+      }
     },
+  },
 };
 </script>
 
