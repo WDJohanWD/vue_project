@@ -22,17 +22,31 @@ export async function agregarArticulo(datosArticulo) {
         const response = await fetch(API_URL, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
             },
             body: JSON.stringify(datosArticulo),
         });
+
+        const data = await response.json();
+
+        datosArticulo.imagen_url = `${data._id}.${datosArticulo.imagen_url}`;
+
+        const response2 = await fetch(`${API_URL}/${data._id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(datosArticulo),
+        });
+
+        console.log(response2)
 
         if (!response.ok) {
             Swal.fire("Error", "No se pudo agregar el artículo", "error");
             throw new Error("Error al agregar el artículo");
         }
 
-        return await response.json();
+        return await response2.json();
     } catch (error) {
         console.error("Error en la solicitud:", error);
         Swal.fire("Error", "No se pudo conectar al servidor o campos vacíos", "error");
@@ -42,6 +56,7 @@ export async function agregarArticulo(datosArticulo) {
 
 export async function actualizarArticulo(id, articulo) {
     try {
+        articulo.imagen_url = `${id}.${articulo.imagen_url}`;
         const response = await fetch(`${API_URL}/${id}`, {
             method: "PUT",
             headers: {
@@ -65,6 +80,7 @@ export async function actualizarArticulo(id, articulo) {
 
 export async function eliminarArticulo(id) {
     try {
+        
         console.log("ID recibido para eliminar:", id);
         const response = await fetch(`${API_URL}/${id}`, {
             method: "DELETE",

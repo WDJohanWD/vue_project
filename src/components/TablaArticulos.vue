@@ -200,7 +200,7 @@ export default {
             event.preventDefault();
 
             try {
-                this.articulo.imagen_url = `${this.articulo._id}.${this.image.name.split('.').pop()}`; 
+                this.articulo.imagen_url = `${this.image.name.split('.').pop()}`; 
                 if (this.articulo._id) {
                     // Si el artículo ya tiene un ID, actualizar
                     await actualizarArticulo(this.articulo._id, this.articulo);
@@ -244,7 +244,7 @@ export default {
 
             // Usa directamente this.image si ya es un archivo
             formdata.append("image", this.image, `${id}.${this.image.name.split('.').pop()}`);
-            formdata.append("articuloId",id);
+            formdata.append("articuloId", id);
 
             try {
                 const uploadResponse = await fetch('http://localhost:5000/subirimg', {
