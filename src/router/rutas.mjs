@@ -6,6 +6,7 @@ import multer from 'multer';
 import Stripe from 'stripe';
 import 'dotenv/config';
 import nodemailer from 'nodemailer';
+import Factura from '../modelos/facturas.js';
 
 console.log(Articulo)
 
@@ -165,6 +166,26 @@ rutas.delete('/articulos/:id', async (req, res) => {
     }
 });
 
+rutas.post('/facturas', async (req, res) => {
+    try {
+        // Crear una nueva factura con los datos recibidos en el cuerpo de la solicitud
+        const factura = new Factura.default(req.body);
+
+        // Guardar la factura en la base de datos
+        await factura.save();
+
+        // Responder con la factura creada y un código de estado 201 (Created)
+        res.status(201).json(factura);
+        console.log("Factura guardada correctamente");
+    } catch (error) {
+        // Si hay un error, responder con un código de estado 400 (Bad Request) y el mensaje de error
+        res.status(400).json({ message: error.message });
+        console.log("Error al guardar la factura:", error);
+    }
+});
+
+
+
 // Ruta para crear la sesión de checkout
 rutas.post('/crear-checkout-session', async (req, res) => {
     try {
@@ -202,6 +223,25 @@ rutas.post('/crear-checkout-session', async (req, res) => {
 
         // Respondemos con el ID de la sesión de Stripe
         res.json({ id: session.id });
+
+        const facturaBBDD = {
+            items: items.map(item => ({
+                nombre: item.nombre,
+                id: String(item._id), // Convertir a ObjectId
+                precio_unitario: item.precio_unitario,
+                cantidad: item.cantidad,
+                total: item.cantidad * item.precio_unitario
+            })),
+            totalFactura: items.reduce((acc, item) => acc + item.cantidad * item.precio_unitario, 0),
+            fecha: new Date()
+        };
+        const response = await fetch("http://localhost:5000/facturas", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(facturaBBDD),
+        });
+
+        console.log(response)
 
     } catch (error) {
         console.error("Error al crear la sesión de pago:", error);
